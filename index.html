@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Zahra Vahedi | Human Factors & UX Researcher</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+
+  <style>
+  :root {
+    --navy:      #0a0f1e;
+    --navy-2:    #0d1526;
+    --navy-3:    #111c35;
+    --card:      #131f38;
+    --card-2:    #172240;
+    --teal:      #00d4aa;
+    --teal-2:    #00b894;
+    --teal-dim:  rgba(0,212,170,0.12);
+    --teal-glow: rgba(0,212,170,0.25);
+    --white:     #f0f4ff;
+    --muted:     #8899bb;
+    --border:    rgba(0,212,170,0.15);
+    --serif:     'Playfair Display', Georgia, serif;
+    --sans:      'Inter', system-ui, sans-serif;
+    --mono:      'JetBrains Mono', monospace;
+    --ease:      0.3s cubic-bezier(0.4,0,0.2,1);
+    --r:         10px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body { background: var(--navy); color: var(--white); font-family: var(--sans); line-height: 1.7; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+  a { color: var(--teal); text-decoration: none; transition: color var(--ease); }
+  a:hover { color: var(--teal-2); }
+  ::selection { background: var(--teal); color: var(--navy); }
+  img { max-width: 100%; display: block; }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--navy-2); }
+  ::-webkit-scrollbar-thumb { background: var(--teal-2); border-radius: 3px; }
+
+  /* ── NAV ── */
+  #nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900; height: 64px; display: flex; align-items: center; justify-content: space-between; padding: 0 60px; background: rgba(10,15,30,0.85); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); transition: padding var(--ease); }
+  #nav.shrunk { height: 52px; }
+  .nav-logo { font-family: var(--serif); font-size: 1.1rem; color: var(--white); letter-spacing: -0.01em; }
+  .nav-logo span { color: var(--teal); }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); transition: color var(--ease); position: relative; }
+  .nav-links a::after { content: ''; position: absolute; left: 0; bottom: -4px; width: 0; height: 1.5px; background: var(--teal); transition: width var(--ease); }
+  .nav-links a:hover, .nav-links a.active { color: var(--teal); }
+  .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+  .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .burger span { width: 24px; height: 2px; background: var(--white); border-radius: 2px; }
+  .mob-nav { display: none; position: fixed; inset: 0; z-index: 800; background: rgba(10,15,30,0.97); flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
+  .mob-nav.open { display: flex; }
+  .mob-nav a { font-size: 1.8rem; font-family: var(--serif); color: var(--white); }
+  .mob-nav a:hover { color: var(--teal); }
+  .mob-close { position: absolute; top: 20px; right: 28px; font-size: 2rem; color: var(--muted); cursor: pointer; background: none; border: none; }
+
+  /* ── SECTIONS ── */
+  section { min-height: 100vh; padding: 100px 60px 80px; display: flex; flex-direction: column; justify-content: center; }
+  .inner { max-width: 1100px; margin: 0 auto; width: 100%; }
+  .section-eyebrow { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; display: flex; align-items: center; gap: 12px; }
+  .section-eyebrow::before { content: ''; width: 40px; height: 1px; background: var(--teal); }
+  .section-heading { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 48px; color: var(--white); }
+
+  /* ── HERO ── */
+  #hero { min-height: 100vh; display: flex; align-items: center; padding: 0 60px; position: relative; overflow: hidden; }
+  #hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(0,212,170,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,212,170,0.04) 1px, transparent 1px); background-size: 60px 60px; animation: gridMove 20s linear infinite; }
+  @keyframes gridMove { from { transform: translateY(0); } to { transform: translateY(60px); } }
+  #hero::after { content: ''; position: absolute; top: -200px; right: -200px; width: 700px; height: 700px; background: radial-gradient(circle, rgba(0,212,170,0.08) 0%, transparent 70%); pointer-events: none; }
+  .hero-inner { max-width: 1100px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 1; }
+  .hero-tag { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal); margin-bottom: 20px; border: 1px solid var(--border); padding: 6px 14px; border-radius: 100px; width: fit-content; }
+  .hero-tag span { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); animation: pulse 2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.5;transform:scale(0.8);} }
+  .hero-name { font-family: var(--serif); font-size: clamp(2.8rem, 5vw, 4.4rem); font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 16px; }
+  .hero-name .accent { color: var(--teal); font-style: italic; }
+  .hero-role { font-family: var(--mono); font-size: 1rem; color: var(--teal); margin-bottom: 6px; }
+  .hero-role::after { content: '|'; animation: blink 1s step-end infinite; margin-left: 2px; }
+  @keyframes blink { 50%{opacity:0;} }
+  .hero-affil { font-size: 0.88rem; color: var(--muted); margin-bottom: 28px; }
+  .hero-summary { font-size: 1rem; color: var(--muted); line-height: 1.8; max-width: 500px; margin-bottom: 40px; }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px; border-radius: 6px; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; transition: all var(--ease); border: 2px solid transparent; }
+  .btn-teal { background: var(--teal); color: var(--navy); border-color: var(--teal); }
+  .btn-teal:hover { background: transparent; color: var(--teal); }
+  .btn-outline { background: transparent; color: var(--white); border-color: var(--border); }
+  .btn-outline:hover { border-color: var(--teal); color: var(--teal); }
+
+  /* ── HERO CARD — FIX 1: photo fills cleanly, no leftover SVG ── */
+  .hero-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; display: flex; flex-direction: column; align-items: center; gap: 24px; position: relative; box-shadow: 0 0 60px rgba(0,212,170,0.06); }
+
+  /* FIX 1a: photo container — clips image to rounded box */
+  .hero-photo {
+    width: 200px; height: 220px;
+    border-radius: 12px; overflow: hidden;   /* ← this clips the image */
+    border: 2px solid var(--border);
+    background: var(--card-2);
+    flex-shrink: 0;
+  }
+  /* FIX 1b: image fills the box, covers it, no distortion */
+  .hero-photo img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center top;  /* ← keeps face visible, not cropped to torso */
+    display: block;
+  }
+
+  .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; }
+  .hero-stat { background: var(--card-2); border-radius: 8px; padding: 14px 16px; text-align: center; border: 1px solid var(--border); }
+  .hero-stat-num { font-family: var(--serif); font-size: 1.8rem; font-weight: 700; color: var(--teal); line-height: 1; }
+  .hero-stat-label { font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+  .hero-badges { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+  .hero-badge { font-family: var(--mono); font-size: 0.65rem; padding: 4px 10px; border-radius: 100px; background: var(--teal-dim); color: var(--teal); border: 1px solid var(--border); }
+
+  /* ── ABOUT ── */
+  #about { background: var(--navy-2); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .about-text p { color: var(--muted); font-size: 0.97rem; line-height: 1.85; margin-bottom: 18px; }
+  .about-text p strong { color: var(--white); font-weight: 600; }
+  .about-text p:first-child { color: var(--white); font-size: 1.05rem; }
+  .about-highlights { margin-top: 28px; }
+  .highlight-item { display: flex; gap: 14px; align-items: flex-start; padding: 14px 0; border-bottom: 1px solid var(--border); }
+  .highlight-icon { width: 36px; height: 36px; border-radius: 8px; background: var(--teal-dim); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1rem; }
+  .highlight-title { font-size: 0.88rem; font-weight: 600; color: var(--white); }
+  .highlight-sub { font-size: 0.78rem; color: var(--muted); }
+
+  /* ── SKILLS — FIX 2: legend doesn't overflow ── */
+  .skills-block {}
+  .skills-category { margin-bottom: 28px; }
+  .skills-cat-label { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal); margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+
+  /* FIX 2: legend — constrain each item so text can't push segments */
+  .skills-legend { display: flex; justify-content: flex-end; gap: 4px; margin-bottom: 20px; align-items: flex-start; }
+  .skills-legend-item {
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    width: 30px;          /* fixed width — won't grow */
+    flex-shrink: 0;
+  }
+  .skills-legend-seg { width: 22px; height: 8px; border-radius: 2px; border: 1px solid rgba(0,212,170,0.2); flex-shrink: 0; }
+  .skills-legend-label {
+    font-family: var(--mono); font-size: 0.52rem; letter-spacing: 0.04em;
+    text-transform: uppercase; color: var(--muted); opacity: 0.55;
+    writing-mode: vertical-rl; transform: rotate(180deg);
+    white-space: nowrap;
+    height: 56px;
+    overflow: hidden;     /* FIX 2: clips text that's too long */
+    text-overflow: ellipsis;
+  }
+
+  .skill-row { display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 14px; padding: 10px 0; border-bottom: 1px solid rgba(0,212,170,0.07); position: relative; }
+  .skill-row:hover .skill-name { color: var(--teal); }
+  .skill-name { font-size: 0.83rem; color: var(--white); font-weight: 500; transition: color var(--ease); }
+  .skill-segs { display: flex; gap: 4px; flex-shrink: 0; }
+  .skill-seg { width: 22px; height: 8px; border-radius: 2px; background: var(--card-2); border: 1px solid rgba(0,212,170,0.2); transition: background 0.35s ease, box-shadow 0.35s ease; }
+  .skill-seg.on { background: var(--teal); box-shadow: 0 0 6px rgba(0,212,170,0.35); }
+  .skill-seg.on.animate { animation: segFill 0.3s ease forwards; }
+  @keyframes segFill { from { background: var(--card-2); box-shadow: none; transform: scaleY(0.4); } to { background: var(--teal); box-shadow: 0 0 6px rgba(0,212,170,0.35); transform: scaleY(1); } }
+  .skill-level { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); min-width: 84px; text-align: right; transition: color var(--ease); }
+  .skill-row:hover .skill-level { color: var(--teal); }
+  .skill-level.lv5 { color: var(--teal); }
+  .skill-level.lv4 { color: #7ecfc0; }
+  .skill-level.lv3 { color: #9ab8b0; }
+  .skill-level.lv2 { color: var(--muted); }
+  .skill-level.lv1 { color: var(--muted); opacity: 0.6; }
+
+  /* ── METRICS ── */
+  #metrics { background: var(--navy-3); min-height: auto; padding: 80px 60px; }
+  .metrics-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
+  .metric-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 36px 24px; text-align: center; transition: all var(--ease); position: relative; overflow: hidden; }
+  .metric-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--teal), transparent); }
+  .metric-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,212,170,0.10); border-color: var(--teal); }
+  .metric-num { font-family: var(--serif); font-size: 3rem; font-weight: 700; color: var(--teal); line-height: 1; margin-bottom: 6px; }
+  .metric-label { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  .metric-sub { font-family: var(--mono); font-size: 0.65rem; color: var(--muted); opacity: 0.6; margin-top: 4px; }
+
+  /* ── PROJECTS ── */
+  #projects { background: var(--navy); }
+  .projects-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; }
+  .proj-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 28px; cursor: default; transition: all var(--ease); position: relative; overflow: hidden; }
+  .proj-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--teal-2), var(--teal)); transform: scaleX(0); transform-origin: left; transition: transform var(--ease); }
+  .proj-card:hover { transform: translateY(-6px); border-color: var(--teal); box-shadow: 0 20px 60px rgba(0,212,170,0.10); }
+  .proj-card:hover::after { transform: scaleX(1); }
+  .proj-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+  .proj-tag { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 9px; border-radius: 4px; background: var(--teal-dim); color: var(--teal); border: 1px solid var(--border); }
+  .proj-title { font-family: var(--serif); font-size: 1.15rem; font-weight: 700; color: var(--white); line-height: 1.3; margin-bottom: 12px; }
+  .proj-desc { font-size: 0.87rem; color: var(--muted); line-height: 1.75; margin-bottom: 20px; }
+  .proj-stats { display: flex; gap: 20px; padding-top: 16px; border-top: 1px solid var(--border); }
+  .proj-stat strong { display: block; font-family: var(--serif); font-size: 1.3rem; color: var(--teal); line-height: 1; }
+  .proj-stat span { font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+
+  /* ── PUBLICATIONS ── */
+  #publications { background: var(--navy-2); }
+  .pub-header-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px; flex-wrap: wrap; gap: 12px; }
+  .pub-scholar-link { display: inline-flex; align-items: center; gap: 8px; font-size: 0.82rem; font-weight: 600; padding: 10px 20px; border-radius: 6px; border: 1px solid var(--border); color: var(--teal); transition: all var(--ease); }
+  .pub-scholar-link:hover { background: var(--teal-dim); border-color: var(--teal); }
+  .pub-list { display: flex; flex-direction: column; }
+  .pub-item { padding: 20px 0; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: start; position: relative; }
+  .pub-item::before { content: ''; position: absolute; left: -24px; top: 50%; transform: translateY(-50%); width: 4px; height: 0; background: var(--teal); border-radius: 2px; transition: height var(--ease); }
+  .pub-item:hover::before { height: 60%; }
+  .pub-venue { font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-bottom: 5px; }
+  .pub-title { font-size: 0.95rem; font-weight: 600; color: var(--white); line-height: 1.45; margin-bottom: 5px; }
+  .pub-authors { font-size: 0.82rem; color: var(--muted); }
+  .pub-authors strong { color: #c9d8f0; }
+  .pub-links { display: flex; flex-direction: column; gap: 6px; align-items: flex-end; flex-shrink: 0; }
+  .pub-link { font-size: 0.72rem; font-weight: 600; padding: 4px 12px; border-radius: 4px; border: 1px solid var(--border); color: var(--teal); white-space: nowrap; transition: all var(--ease); }
+  .pub-link:hover { background: var(--teal); color: var(--navy); border-color: var(--teal); }
+
+  /* ── GALLERY — FIX 3: consistent 5-photo grid with caption overlays ── */
+  #practice { background: var(--navy); }
+
+  /* Desktop: 3-col asymmetric, first photo spans 2 rows */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    grid-template-rows: 220px 220px;
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+  /* FIX 3: each item is a relative container so caption overlays work */
+  .gallery-item {
+    border-radius: var(--r);
+    overflow: hidden;
+    background: var(--card);
+    border: 1px solid var(--border);
+    position: relative;           /* needed for caption overlay */
+    transition: border-color var(--ease), box-shadow var(--ease);
+    cursor: default;
+  }
+  .gallery-item:hover { border-color: var(--teal); box-shadow: 0 0 24px rgba(0,212,170,0.12); }
+  .gallery-tall { grid-row: span 2; }
+
+  /* Image fills the entire cell */
+  .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* FIX 3: caption overlay — slides up on hover */
+  .gallery-caption {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(transparent, rgba(10,15,30,0.88));
+    padding: 28px 14px 12px;
+    font-family: var(--mono); font-size: 0.68rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--teal);
+    transform: translateY(100%);
+    transition: transform 0.28s ease;
+  }
+  .gallery-item:hover .gallery-caption { transform: translateY(0); }
+
+  /* Placeholder for slots without a photo yet */
+  .gallery-placeholder {
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 10px; color: var(--muted);
+    font-family: var(--mono); font-size: 0.68rem;
+    letter-spacing: 0.08em; text-transform: uppercase; text-align: center; padding: 12px;
+  }
+  .gallery-placeholder svg { opacity: 0.25; }
+
+  .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .video-embed { position: relative; padding-bottom: 56.25%; border-radius: var(--r); overflow: hidden; background: #000; border: 1px solid var(--border); }
+  .video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .video-caption { font-size: 0.78rem; color: var(--muted); margin-top: 8px; font-family: var(--mono); font-style: italic; }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--navy-2); min-height: auto; padding: 100px 60px; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .contact-intro h3 { font-family: var(--serif); font-size: 1.6rem; font-weight: 700; line-height: 1.2; margin-bottom: 16px; color: var(--white); }
+  .contact-intro h3 em { color: var(--teal); font-style: italic; }
+  .contact-intro p { font-size: 0.95rem; color: var(--muted); line-height: 1.8; }
+  .contact-links { display: flex; flex-direction: column; gap: 14px; }
+  .contact-link { display: flex; align-items: center; gap: 16px; padding: 18px 22px; border-radius: var(--r); background: var(--card); border: 1px solid var(--border); color: var(--white); transition: all var(--ease); }
+  .contact-link:hover { border-color: var(--teal); box-shadow: 0 0 24px rgba(0,212,170,0.12); color: var(--teal); }
+  .cl-icon { width: 42px; height: 42px; border-radius: 8px; background: var(--teal-dim); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .cl-icon svg { color: var(--teal); }
+  .cl-label { font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+  .cl-value { font-size: 0.92rem; font-weight: 600; }
+
+  /* ── FOOTER ── */
+  footer { background: var(--navy); border-top: 1px solid var(--border); padding: 28px 60px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  footer span { font-size: 0.78rem; color: var(--muted); font-family: var(--mono); }
+  footer a { color: var(--teal); }
+
+  /* ── SCROLL TO TOP ── */
+  #scrollTop { position: fixed; bottom: 28px; right: 28px; z-index: 500; width: 42px; height: 42px; border-radius: 50%; background: var(--teal); color: var(--navy); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity var(--ease), transform var(--ease); box-shadow: 0 4px 20px rgba(0,212,170,0.3); }
+  #scrollTop.visible { opacity: 1; pointer-events: auto; }
+  #scrollTop:hover { transform: translateY(-3px); }
+
+  /* ── REVEAL ── */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    section { padding: 80px 28px 60px; }
+    #hero { padding: 80px 28px; }
+    #metrics, #contact { padding: 60px 28px; }
+    footer { padding: 20px 28px; }
+    #nav { padding: 0 28px; }
+    .hero-inner { grid-template-columns: 1fr; }
+
+    /* FIX 1 mobile: show the hero card on mobile too, centered */
+    .hero-card {
+      display: flex;
+      max-width: 340px;
+      margin: 0 auto;
+    }
+
+    .about-grid { grid-template-columns: 1fr; }
+    .metrics-row { grid-template-columns: repeat(2,1fr); }
+    .projects-grid { grid-template-columns: 1fr; }
+
+    /* FIX 3 mobile: single column, each photo a fixed height card */
+    .gallery-grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: none;
+      gap: 12px;
+    }
+    .gallery-tall { grid-row: auto; }
+    .gallery-item { height: 220px; }
+
+    /* Always show caption on mobile (no hover) */
+    .gallery-caption { transform: translateY(0); }
+
+    .video-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .pub-item { grid-template-columns: 1fr; }
+    .pub-links { flex-direction: row; align-items: flex-start; }
+    .nav-links { display: none; }
+    .burger { display: flex; }
+
+    /* Skill level label shorter on mobile */
+    .skill-level { min-width: 70px; font-size: 0.55rem; }
+  }
+
+  @media (max-width: 520px) {
+    .metrics-row { grid-template-columns: repeat(2,1fr); }
+    footer { flex-direction: column; }
+    .skill-row { grid-template-columns: 1fr auto auto; gap: 8px; }
+    .skill-seg { width: 16px; }
+    .skill-level { min-width: 60px; }
+  }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo">Zahra <span>Vahedi</span></div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#hero" class="active">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Research</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#practice">In Practice</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="burger" id="burger"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="mob-nav" id="mobNav">
+  <button class="mob-close" id="mobClose">&#x2715;</button>
+  <a href="#hero"         onclick="closeMob()">Home</a>
+  <a href="#about"        onclick="closeMob()">About</a>
+  <a href="#projects"     onclick="closeMob()">Research</a>
+  <a href="#publications" onclick="closeMob()">Publications</a>
+  <a href="#practice"     onclick="closeMob()">In Practice</a>
+  <a href="#contact"      onclick="closeMob()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-tag"><span></span> AHFP · Research Scientist II · FAA</div>
+      <h1 class="hero-name">Zahra<br><span class="accent">Vahedi</span></h1>
+      <div class="hero-role" id="typingRole">Human Factors Researcher</div>
+      <div class="hero-affil">University at Buffalo · Cherokee Federal / FAA</div>
+      <p class="hero-summary">8+ years designing and executing rigorous human-subject studies — from aviation and healthcare to robotics and industrial safety. I translate physiological signals, behavioral data, and statistical models into system decisions that protect and empower people.</p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn btn-teal">View Research</a>
+        <a href="#publications" class="btn btn-outline">Publications</a>
+        <a href="#contact" class="btn btn-outline">Contact</a>
+      </div>
+    </div>
+
+    <!-- FIX 1: hero-photo contains ONLY the img tag — no SVG, no text -->
+    <div class="hero-card">
+      <div class="hero-photo">
+        <img src="photo.jpg" alt="Zahra Vahedi"/>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="hero-stat-num" data-target="205">0</div><div class="hero-stat-label">Citations</div></div>
+        <div class="hero-stat"><div class="hero-stat-num" data-target="14">0</div><div class="hero-stat-label">Publications</div></div>
+        <div class="hero-stat"><div class="hero-stat-num" data-target="8">0</div><div class="hero-stat-label">Yrs Exp.</div></div>
+        <div class="hero-stat"><div class="hero-stat-num" data-target="180">0</div><div class="hero-stat-label">Participants</div></div>
+      </div>
+      <div class="hero-badges">
+        <span class="hero-badge">Aviation</span>
+        <span class="hero-badge">Healthcare</span>
+        <span class="hero-badge">Robotics</span>
+        <span class="hero-badge">HRI</span>
+        <span class="hero-badge">Usability</span>
+        <span class="hero-badge">EMG</span>
+        <span class="hero-badge">Eye-Tracking</span>
+        <span class="hero-badge">EDA</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="inner">
+    <div class="section-eyebrow">About Me</div>
+    <h2 class="section-heading">Research Scientist &amp; <em style="font-style:italic;color:var(--teal);">Human Factors Engineer</em></h2>
+    <div class="about-grid">
+      <div>
+        <div class="about-text">
+          <p>I am a <strong>Human Factors and UX Researcher</strong> with 8+ years of experience spanning usability evaluation, human performance research, and mixed-methods analysis across aviation, healthcare, industrial safety, and robotics.</p>
+          <p>I design and execute end-to-end human-subject studies — from IRB protocol development and participant recruitment through physiological data collection (Tobii eye-tracking, EMG, EDA, heart rate, motion capture) and stakeholder-ready synthesis. I apply statistical modeling and data science workflows in <strong>Python and R</strong> to translate behavioral signals into actionable, defensible findings for regulated, high-reliability environments.</p>
+          <p>Currently serving as <strong>Human Factors Researcher II at the FAA</strong> via Cherokee Federal, delivering human-in-the-loop insights guiding automation and interface design decisions. Recipient of the AAUW National Fellowship, HFES Dieter W. Jahns Award, and the Mark Diamond Research Grant.</p>
+        </div>
+        <div class="about-highlights reveal">
+          <div class="highlight-item">
+            <div class="highlight-icon">🎓</div>
+            <div><div class="highlight-title">PhD, Human Factors — ISE</div><div class="highlight-sub">University at Buffalo, SUNY · GPA 3.83</div></div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">🏛️</div>
+            <div><div class="highlight-title">MSc, Ergonomics</div><div class="highlight-sub">Tehran University of Medical Sciences · GPA 3.97</div></div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">🏅</div>
+            <div><div class="highlight-title">AHFP — Associate Human Factors Professional</div><div class="highlight-sub">Board of Certification in Professional Ergonomics (BCPE)</div></div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">✈️</div>
+            <div><div class="highlight-title">Human Factors Researcher II · FAA</div><div class="highlight-sub">Cherokee Federal · Aug 2025 – Present</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SKILLS (5-level segmented bar) -->
+      <div class="skills-block reveal">
+
+        <!-- FIX 2: legend — fixed-width items, labels clipped not wrapping -->
+        <div class="skills-legend" style="margin-bottom:20px;">
+          <div class="skills-legend-item">
+            <div class="skills-legend-seg" style="background:rgba(0,212,170,0.15);"></div>
+            <span class="skills-legend-label">Novice</span>
+          </div>
+          <div class="skills-legend-item">
+            <div class="skills-legend-seg" style="background:rgba(0,212,170,0.30);"></div>
+            <span class="skills-legend-label">Beginner</span>
+          </div>
+          <div class="skills-legend-item">
+            <div class="skills-legend-seg" style="background:rgba(0,212,170,0.50);"></div>
+            <span class="skills-legend-label" style="color:var(--muted);opacity:0.55;">Intermediate</span>
+          </div>
+          <div class="skills-legend-item">
+            <div class="skills-legend-seg" style="background:rgba(0,212,170,0.75);"></div>
+            <span class="skills-legend-label">Advanced</span>
+          </div>
+          <div class="skills-legend-item">
+            <div class="skills-legend-seg" style="background:var(--teal);border-color:rgba(0,212,170,0.4);"></div>
+            <span class="skills-legend-label" style="color:var(--teal);opacity:1;">Expert</span>
+          </div>
+        </div>
+
+        <div class="skills-category">
+          <div class="skills-cat-label">Research Methods</div>
+          <div class="skill-row"><span class="skill-name">Usability Testing &amp; UX Research</span><div class="skill-segs" data-level="5"><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div></div><span class="skill-level lv5">Expert</span></div>
+          <div class="skill-row"><span class="skill-name">Experimental Design &amp; Mixed-Methods</span><div class="skill-segs" data-level="5"><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div></div><span class="skill-level lv5">Expert</span></div>
+          <div class="skill-row"><span class="skill-name">IRB Protocol &amp; Research Ethics</span><div class="skill-segs" data-level="5"><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div></div><span class="skill-level lv5">Expert</span></div>
+          <div class="skill-row"><span class="skill-name">Physiological Measurement (EMG, EDA, Eye-Tracking)</span><div class="skill-segs" data-level="4"><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div></div><span class="skill-level lv4">Advanced</span></div>
+          <div class="skill-row"><span class="skill-name">Qualitative Analysis &amp; Thematic Coding</span><div class="skill-segs" data-level="4"><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div></div><span class="skill-level lv4">Advanced</span></div>
+          <div class="skill-row"><span class="skill-name">Survey Design (Qualtrics)</span><div class="skill-segs" data-level="4"><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div></div><span class="skill-level lv4">Advanced</span></div>
+        </div>
+
+        <div class="skills-category">
+          <div class="skills-cat-label">Data Science &amp; Analysis</div>
+          <div class="skill-row"><span class="skill-name">Statistical Analysis (R, SPSS, Minitab)</span><div class="skill-segs" data-level="4"><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div></div><span class="skill-level lv4">Advanced</span></div>
+          <div class="skill-row"><span class="skill-name">Python (Pandas, NumPy, SciPy, Sklearn)</span><div class="skill-segs" data-level="4"><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div></div><span class="skill-level lv4">Advanced</span></div>
+          <div class="skill-row"><span class="skill-name">Data Visualization (Tableau, Matplotlib, Seaborn)</span><div class="skill-segs" data-level="4"><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div></div><span class="skill-level lv4">Advanced</span></div>
+          <div class="skill-row"><span class="skill-name">Computer Vision (YOLO, OpenPose, Detectron2)</span><div class="skill-segs" data-level="3"><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div></div><span class="skill-level lv3">Intermediate</span></div>
+          <div class="skill-row"><span class="skill-name">Machine Learning (TensorFlow, Sklearn)</span><div class="skill-segs" data-level="3"><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div></div><span class="skill-level lv3">Intermediate</span></div>
+        </div>
+
+        <div class="skills-category">
+          <div class="skills-cat-label">Domains &amp; Compliance</div>
+          <div class="skill-row"><span class="skill-name">Aviation Human Factors (FAA)</span><div class="skill-segs" data-level="5"><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div></div><span class="skill-level lv5">Expert</span></div>
+          <div class="skill-row"><span class="skill-name">Ergonomics &amp; Workplace Safety</span><div class="skill-segs" data-level="5"><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div></div><span class="skill-level lv5">Expert</span></div>
+          <div class="skill-row"><span class="skill-name">Universal Design &amp; Accessibility</span><div class="skill-segs" data-level="4"><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div></div><span class="skill-level lv4">Advanced</span></div>
+          <div class="skill-row"><span class="skill-name">Medical Device Usability (IEC 62366, ISO 14971)</span><div class="skill-segs" data-level="3"><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div></div><span class="skill-level lv3">Intermediate</span></div>
+          <div class="skill-row"><span class="skill-name">UX/UI Prototyping (Figma, PenPot)</span><div class="skill-segs" data-level="3"><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div></div><span class="skill-level lv3">Intermediate</span></div>
+        </div>
+
+        <p style="font-family:var(--mono);font-size:0.58rem;color:var(--muted);opacity:0.45;margin-top:6px;text-align:right;">Self-assessed · adapted from the Dreyfus competency model</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS -->
+<!-- <section id="metrics">
+  <div class="inner">
+    <div class="metrics-row">
+      <div class="metric-card reveal"><div class="metric-num" data-target="14">0</div><div class="metric-label">Peer-Reviewed Publications</div><div class="metric-sub">ResearchGate · Google Scholar</div></div>
+      <div class="metric-card reveal reveal-delay-1"><div class="metric-num" data-target="205">0</div><div class="metric-label">Total Citations</div><div class="metric-sub">Google Scholar</div></div>
+      <div class="metric-card reveal reveal-delay-2"><div class="metric-num" data-target="180">0</div><div class="metric-label">Study Participants</div><div class="metric-sub">across all research</div></div>
+      <div class="metric-card reveal reveal-delay-3"><div class="metric-num" data-target="8">0</div><div class="metric-label">Years of Research</div><div class="metric-sub">2016 – present</div></div>
+    </div>
+  </div>
+</section> -->
+
+<section id="certifications" style="background: var(--navy-3); min-height: auto; padding: 80px 60px;">
+  <div class="inner">
+    <div class="section-eyebrow">Professional Credentials</div>
+    <h2 class="section-heading" style="margin-bottom: 40px;">Certifications</h2>
+    <div class="metrics-row">
+      <div class="metric-card reveal">
+        <div class="metric-num" style="font-size: 1.2rem; font-family: var(--mono); margin-bottom: 15px;">AHFP</div>
+        <div class="metric-label" style="font-size: 0.85rem; color: var(--white);">Associate Human Factors Professional</div>
+        <div class="metric-sub">BCPE Board of Certification</div>
+      </div>
+      
+      <div class="metric-card reveal reveal-delay-1">
+        <div class="metric-num" style="font-size: 1.2rem; font-family: var(--mono); margin-bottom: 15px;">UX Design</div>
+        <div class="metric-label" style="font-size: 0.85rem; color: var(--white);">Foundations of UX Design</div>
+        <div class="metric-sub">Google / Coursera</div>
+      </div>
+
+      <div class="metric-card reveal reveal-delay-2">
+        <div class="metric-num" style="font-size: 1.2rem; font-family: var(--mono); margin-bottom: 15px;">Project Mgmt</div>
+        <div class="metric-label" style="font-size: 0.85rem; color: var(--white);">Foundations of Project Management</div>
+        <div class="metric-sub">Google / Coursera</div>
+      </div>
+
+      <div class="metric-card reveal reveal-delay-3">
+        <div class="metric-num" style="font-size: 1.2rem; font-family: var(--mono); margin-bottom: 15px;">Data Viz</div>
+        <div class="metric-label" style="font-size: 0.85rem; color: var(--white);">Fundamentals of Visualization (Tableau)</div>
+        <div class="metric-sub">UC Davis / Coursera</div>
+      </div>
+
+      <div class="metric-card reveal">
+        <div class="metric-num" style="font-size: 1.2rem; font-family: var(--mono); margin-bottom: 15px;">AI Ethics</div>
+        <div class="metric-label" style="font-size: 0.85rem; color: var(--white);">Human Factors in AI</div>
+        <div class="metric-sub">Duke University / Coursera</div>
+      </div>
+
+      <div class="metric-card reveal reveal-delay-1">
+        <div class="metric-num" style="font-size: 1.2rem; font-family: var(--mono); margin-bottom: 15px;">Generative AI</div>
+        <div class="metric-label" style="font-size: 0.85rem; color: var(--white);">Prompting like a Pro</div>
+        <div class="metric-sub">Google / Coursera</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH PROJECTS -->
+<section id="projects">
+  <div class="inner">
+    <div class="section-eyebrow">Research Projects</div>
+    <h2 class="section-heading">Featured Studies &amp; Projects</h2>
+    <div class="projects-grid">
+
+      <div class="proj-card reveal">
+        <div class="proj-tags"><span class="proj-tag">HRI</span><span class="proj-tag">Eye-Tracking</span><span class="proj-tag">Mixed-Methods</span><span class="proj-tag">UB · 2023–2025</span></div>
+        <div class="proj-title">Transition to Modern Workplaces with Collaborative Robots</div>
+        <div class="proj-desc">Led end-to-end mixed-methods research on human adaptation to cobot workflows. Managed 30+ participant sessions integrating Tobii eye-tracking and heart rate monitoring to quantify cognitive load, usability, and learning trajectories using the Crawford model. Delivered UX and HRI design recommendations grounded in behavioral and physiological data.</div>
+        <div class="proj-stats"><div class="proj-stat"><strong>30+</strong><span>Participants</span></div><div class="proj-stat"><strong>2</strong><span>Physiological Streams</span></div><div class="proj-stat"><strong>2023–25</strong><span>Duration</span></div></div>
+      </div>
+
+      <div class="proj-card reveal reveal-delay-1">
+        <div class="proj-tags"><span class="proj-tag">Universal Design</span><span class="proj-tag">EDA</span><span class="proj-tag">Accessibility</span><span class="proj-tag">UB · 2022–2025</span></div>
+        <div class="proj-title">Hotel Inclusivity — Universal Design for Diverse User Groups</div>
+        <div class="proj-desc">Conducted 50+ participant accessibility studies across healthy adults, older adults, and wheelchair users using guided hotel walkthroughs, usability ratings, and EDA physiological measures. Identified critical friction points; published in two peer-reviewed papers (HFES 2023, journal 2025).</div>
+        <div class="proj-stats"><div class="proj-stat"><strong>50+</strong><span>Participants</span></div><div class="proj-stat"><strong>2</strong><span>Publications</span></div><div class="proj-stat"><strong>2022–25</strong><span>Duration</span></div></div>
+      </div>
+
+      <div class="proj-card reveal reveal-delay-2">
+        <div class="proj-tags"><span class="proj-tag">Computer Vision</span><span class="proj-tag">AI Safety</span><span class="proj-tag">UX Design</span><span class="proj-tag">UB · 2024–2025</span></div>
+        <div class="proj-title">Proactive Worker Safety via AI — Manager-Facing Interface</div>
+        <div class="proj-desc">Built a real-time ergonomic risk pipeline using YOLO, OpenPose, and Detectron2 CV models feeding a Python dashboard for manager-level safety decisions. Achieved ~70% automated risk-scoring accuracy through posture classification and validation against labeled observations.</div>
+        <div class="proj-stats"><div class="proj-stat"><strong>~70%</strong><span>Risk Accuracy</span></div><div class="proj-stat"><strong>3</strong><span>CV Models</span></div><div class="proj-stat"><strong>2024–25</strong><span>Duration</span></div></div>
+      </div>
+
+      <div class="proj-card reveal reveal-delay-3">
+        <div class="proj-tags"><span class="proj-tag">EMG</span><span class="proj-tag">Neck Kinematics</span><span class="proj-tag">Ergonomics</span><span class="proj-tag">TUMS · 2018–2022</span></div>
+        <div class="proj-title">Discomfort, Neck Kinematics &amp; Muscle Activity in Smartphone Use</div>
+        <div class="proj-desc">Evaluated effects of posture, task type, and handgrip on discomfort, neck kinematics, and EMG in 24 participants. Sitting produced significantly higher neck, lower back, and shoulder discomfort. Published in <em>Human Factors</em> (Sage, 2024).</div>
+        <div class="proj-stats"><div class="proj-stat"><strong>24</strong><span>Participants</span></div><div class="proj-stat"><strong>3</strong><span>Task Types</span></div><div class="proj-stat"><strong><em>Human Factors</em></strong><span>Published</span></div></div>
+      </div>
+
+      <div class="proj-card reveal">
+        <div class="proj-tags"><span class="proj-tag">RPE</span><span class="proj-tag">Fatigue</span><span class="proj-tag">Biomechanics</span><span class="proj-tag">UB · 2021–2023</span></div>
+        <div class="proj-title">RPE vs. Relative Strength in Fatiguing Dynamic Upper-Extremity Tasks</div>
+        <div class="proj-desc">Evaluated RPE–relative strength relationship in simulated order-picking tasks. 14 participants completed four sessions across varying pace and weight conditions. Published in <em>Applied Ergonomics</em>.</div>
+        <div class="proj-stats"><div class="proj-stat"><strong>14</strong><span>Participants</span></div><div class="proj-stat"><strong>4</strong><span>Sessions</span></div><div class="proj-stat"><strong>Appl. Ergon.</strong><span>Published</span></div></div>
+      </div>
+
+      <div class="proj-card reveal reveal-delay-1">
+        <div class="proj-tags"><span class="proj-tag">Medical Device UX</span><span class="proj-tag">Force Analysis</span><span class="proj-tag">Clinical</span><span class="proj-tag">TUMS · 2017–2019</span></div>
+        <div class="proj-title">Ergonomic Redesign of Infusion Set Connector Tool for Nurses</div>
+        <div class="proj-desc">Reduced hand-arm force requirement from 112N to 49N (56% reduction) and decreased upper-limb muscle activity by 35–60%. Delivered engineering-ready specifications. Published in <em>Applied Ergonomics</em> (2019).</div>
+        <div class="proj-stats"><div class="proj-stat"><strong>56%</strong><span>Force Reduction</span></div><div class="proj-stat"><strong>35–60%</strong><span>EMG Decrease</span></div><div class="proj-stat"><strong>Appl. Ergon.</strong><span>Published</span></div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- RESEARCH IN PRACTICE -->
+<section id="practice">
+  <div class="inner">
+    <div class="section-eyebrow">Research in Practice</div>
+    <h2 class="section-heading">Lab, Field &amp; Conference Work</h2>
+
+    <!-- FIX 3: each gallery-item has img + caption overlay. Hover reveals the caption label. -->
+    <div class="gallery-grid reveal">
+
+      <!-- Tall photo (spans 2 rows on desktop) -->
+      <div class="gallery-item gallery-tall">
+        <img src="Cobot.png" alt="Cobot Workspace Study"/>
+        <div class="gallery-caption">Cobot Workspace Study</div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="VideoRecog.png" alt="Real-time Video Recognition"/>
+        <div class="gallery-caption">Real-time Video Recognition</div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="Hotel.jpg" alt="Hotel Walkthrough Study"/>
+        <div class="gallery-caption">Hotel Walkthrough Study</div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="Motion.png" alt="EMG &amp; Motion Capture"/>
+        <div class="gallery-caption">EMG &amp; Motion Capture</div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="conference.jpg" alt="Conference Presentation"/>
+        <div class="gallery-caption">Conference Presentation — Arizona Biltmore</div>
+      </div>
+
+    </div>
+
+    <!-- Videos -->
+    <div class="video-grid reveal">
+      <div class="video-block">
+        <div class="video-embed">
+          <iframe src="https://www.youtube.com/embed/BlsBEqmCOQU"
+            title="Research Video 1"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+        <p class="video-caption">▸ Cobot Study Demo</p>
+      </div>
+      <div class="video-block">
+        <div class="video-embed">
+          <iframe src="https://youtu.be/5vQp8hPMzF4"
+            title="Research Video 2"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+        <p class="video-caption">▸ AI Safety Demo</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="inner">
+    <div class="section-eyebrow">Research Output</div>
+    <div class="pub-header-row">
+      <h2 class="section-heading" style="margin-bottom:0;">Publications</h2>
+      <a href="https://scholar.google.com/citations?user=spYCdc8AAAAJ&hl=en" target="_blank" class="pub-scholar-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422A12.08 12.08 0 0 1 23 17c0 2.5-5 5-11.5 5S0 19.5 0 17a12.08 12.08 0 0 1 4.84-6.46L12 14z"/></svg>
+        205 citations · Google Scholar ↗
+      </a>
+    </div>
+    <div class="pub-list">
+      <div class="pub-item reveal"><div><div class="pub-venue">Applied Ergonomics / Health Sciences Journal · Mar 2025</div><div class="pub-title">Assessing Hotel Inclusivity: A Case Study Evaluation of Universal Design for Older Adults and Wheelchair Users</div><div class="pub-authors"><strong>Vahedi Z.</strong>, Quinn T., Cavuoto L.</div></div><div class="pub-links"><a href="https://www.researchgate.net/profile/Zahra-Vahedi" target="_blank" class="pub-link">ResearchGate</a></div></div>
+      <div class="pub-item reveal"><div><div class="pub-venue">Applied Ergonomics or Similar · Jan 2025</div><div class="pub-title">Exploring Physiological Responses Through EDA for Evaluating Universal Design Features in a Hotel Environment</div><div class="pub-authors">Quinn T., <strong>Vahedi Z.</strong>, Cavuoto L.</div></div><div class="pub-links"><a href="https://scholar.google.com/citations?user=spYCdc8AAAAJ&hl=en" target="_blank" class="pub-link">Scholar</a></div></div>
+      <div class="pub-item reveal"><div><div class="pub-venue">Human Factors (Sage) · Feb 2024 · Vol. 66(2): 437–450</div><div class="pub-title">Perceived Discomfort, Neck Kinematics, and Muscular Activity During Smartphone Usage: A Comparative Study</div><div class="pub-authors"><strong>Vahedi Z.</strong>, Kazemi Z., Sharifnezhad A., Mazloumi A.</div></div><div class="pub-links"><a href="https://pubmed.ncbi.nlm.nih.gov/35477293/" target="_blank" class="pub-link">PubMed</a><a href="https://journals.sagepub.com/doi/abs/10.1177/00187208221087760" target="_blank" class="pub-link">DOI</a></div></div>
+      <div class="pub-item reveal"><div><div class="pub-venue">HFES Annual Meeting Proceedings · 2023 · Vol. 67(1): 1072–1077</div><div class="pub-title">Understanding Hotel Design Priorities for Individuals of Different Physical Ability Levels</div><div class="pub-authors"><strong>Vahedi Z.</strong>, Cavuoto L.</div></div><div class="pub-links"><a href="https://journals.sagepub.com/doi/abs/10.1177/21695067231192693" target="_blank" class="pub-link">DOI</a><a href="https://www.researchgate.net/publication/376683392" target="_blank" class="pub-link">PDF</a></div></div>
+      <div class="pub-item reveal"><div><div class="pub-venue">Applied Ergonomics · 2023</div><div class="pub-title">The Relationship Between Ratings of Perceived Exertion (RPE) and Relative Strength for a Fatiguing Dynamic Upper Extremity Task</div><div class="pub-authors"><strong>Vahedi Z.</strong>, Kazemi Kheiri S., Hajifar S., Ragani Lamooki S., Sun H., Megahed F.M., Cavuoto L.A.</div></div><div class="pub-links"><a href="https://pubmed.ncbi.nlm.nih.gov/36799881/" target="_blank" class="pub-link">PubMed</a></div></div>
+      <div class="pub-item reveal"><div><div class="pub-venue">Work: Prevention, Assessment &amp; Rehabilitation · 2021</div><div class="pub-title">Head Forward Flexion, Lateral Bending and Viewing Distance in Smartphone Users: Sitting vs. Standing Postures</div><div class="pub-authors"><strong>Vahedi Z.</strong>, Mazloumi A., Sharifnezhad A., Kazemi Z., Garosi E.</div></div><div class="pub-links"><a href="https://journals.sagepub.com/doi/10.3233/WOR-203303" target="_blank" class="pub-link">DOI</a></div></div>
+      <div class="pub-item reveal"><div><div class="pub-venue">Applied Ergonomics · 2019 · Vol. 75: 91–98</div><div class="pub-title">Design and Ergonomic Assessment of an Infusion Set Connector Tool Used in Nursing Work</div><div class="pub-authors">Garosi E., Mazloumi A., Kalantari R., <strong>Vahedi Z.</strong>, Shirzhiyan Z.</div></div><div class="pub-links"><a href="#" class="pub-link">DOI</a></div></div>
+      <div class="pub-item reveal"><div><div class="pub-venue">Int. Journal of Occupational Hygiene (IJOH) · 2019</div><div class="pub-title">Risk Factors of Low Back Pain in Iranian Workers 2000–2015: A Systematic Review</div><div class="pub-authors"><strong>Vahedi Z.</strong>, et al. — 150 studies reviewed; 48.77% avg LBP prevalence</div></div><div class="pub-links"><a href="#" class="pub-link">DOI</a></div></div>
+      <div class="pub-item reveal"><div><div class="pub-venue">Int. Journal of Occupational Hygiene (IJOH) · 2018</div><div class="pub-title">Survey of Smartphone Usability Score and Satisfaction Among Elderly Users</div><div class="pub-authors"><strong>Vahedi Z.</strong>, et al. — SUS 59.1–62.5 (avg 68.7 yrs); r = −0.69 age–usability</div></div><div class="pub-links"><a href="#" class="pub-link">DOI</a></div></div>
+    </div>
+    <p style="margin-top:20px;font-family:var(--mono);font-size:0.72rem;color:var(--muted);">↗ Full list on <a href="https://scholar.google.com/citations?user=spYCdc8AAAAJ&hl=en" target="_blank">Google Scholar</a> and <a href="https://www.researchgate.net/profile/Zahra-Vahedi" target="_blank">ResearchGate</a>. DOI links marked "#" — add your real DOI from Scholar.</p>
+  </div>
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="inner">
+    <div class="section-eyebrow">Get in Touch</div>
+    <h2 class="section-heading">Let's Collaborate</h2>
+    <div class="contact-grid">
+      <div class="contact-intro reveal">
+        <h3>Open to research that <em>moves things forward</em></h3>
+        <p>I'm open to research collaborations, applied human factors consulting, and full-time opportunities in human factors engineering and UX research — especially in aviation, healthcare, and industrial safety.<br><br>If you're working on systems where human performance, safety, or usability is critical, I'd love to connect.</p>
+      </div>
+      <div class="contact-links reveal reveal-delay-1">
+        <a href="mailto:vahedizhr@gmail.com" class="contact-link">
+          <div class="cl-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg></div>
+          <div><div class="cl-label">Email</div><div class="cl-value">vahedizhr@gmail.com</div></div>
+        </a>
+        <a href="https://linkedin.com/in/zahravahedi" target="_blank" class="contact-link">
+          <div class="cl-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7H10V9h4v2a6 6 0 0 1 2-3zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></div>
+          <div><div class="cl-label">LinkedIn</div><div class="cl-value">linkedin.com/in/zahravahedi</div></div>
+        </a>
+        <a href="https://scholar.google.com/citations?user=spYCdc8AAAAJ&hl=en" target="_blank" class="contact-link">
+          <div class="cl-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422A12.08 12.08 0 0 1 23 17c0 2.5-5 5-11.5 5S0 19.5 0 17a12.08 12.08 0 0 1 4.84-6.46L12 14z"/></svg></div>
+          <div><div class="cl-label">Google Scholar</div><div class="cl-value">205 citations · 14 publications</div></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2025 Zahra Vahedi · Human Factors &amp; UX Researcher</span>
+  <span><a href="mailto:vahedizhr@gmail.com">vahedizhr@gmail.com</a> · <a href="https://scholar.google.com/citations?user=spYCdc8AAAAJ&hl=en" target="_blank">Google Scholar</a></span>
+</footer>
+
+<button id="scrollTop" aria-label="Scroll to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+
+<script>
+  /* Mobile nav */
+  document.getElementById('burger').addEventListener('click', () => document.getElementById('mobNav').classList.add('open'));
+  document.getElementById('mobClose').addEventListener('click', closeMob);
+  function closeMob() { document.getElementById('mobNav').classList.remove('open'); }
+
+  /* Nav shrink + active link */
+  const nav = document.getElementById('nav');
+  const sections = document.querySelectorAll('section[id]');
+  const navAs = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    nav.classList.toggle('shrunk', y > 80);
+    document.getElementById('scrollTop').classList.toggle('visible', y > 400);
+    sections.forEach(sec => {
+      if (y >= sec.offsetTop - 120 && y < sec.offsetTop - 120 + sec.offsetHeight) {
+        navAs.forEach(a => a.classList.remove('active'));
+        const a = document.querySelector(`.nav-links a[href="#${sec.id}"]`);
+        if (a) a.classList.add('active');
+      }
+    });
+  });
+  document.getElementById('scrollTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  /* Intersection observer: reveal + skill segments + counters */
+  const iObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      el.classList.add('visible');
+
+      /* Skill segments */
+      el.querySelectorAll('.skill-segs[data-level]').forEach(bar => {
+        const level = parseInt(bar.dataset.level);
+        bar.querySelectorAll('.skill-seg').forEach((seg, i) => {
+          if (i < level) setTimeout(() => seg.classList.add('on', 'animate'), i * 80);
+        });
+      });
+
+      /* Counters */
+      el.querySelectorAll('[data-target]').forEach(num => {
+        const target = +num.dataset.target;
+        const start = performance.now();
+        const tick = now => {
+          const p = Math.min((now - start) / 1400, 1);
+          const ease = 1 - Math.pow(1 - p, 3);
+          num.textContent = Math.floor(ease * target);
+          if (p < 1) requestAnimationFrame(tick);
+          else num.textContent = target;
+        };
+        requestAnimationFrame(tick);
+      });
+
+      iObs.unobserve(el);
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal, .hero-card, .about-grid, .metrics-row, .projects-grid, .pub-list, .gallery-grid, .video-grid, .contact-grid').forEach(el => {
+    el.classList.add('reveal');
+    iObs.observe(el);
+  });
+  document.querySelectorAll('.reveal').forEach(el => iObs.observe(el));
+
+  /* Typing animation */
+  const roles = ['Human Factors Researcher','UX Research Scientist','Ergonomics Expert','FAA Research Scientist II','Mixed-Methods Researcher'];
+  let ri = 0, ci = 0, deleting = false;
+  const roleEl = document.getElementById('typingRole');
+  function typeLoop() {
+    const current = roles[ri];
+    if (!deleting) {
+      roleEl.textContent = current.slice(0, ++ci);
+      if (ci === current.length) { deleting = true; setTimeout(typeLoop, 2200); return; }
+    } else {
+      roleEl.textContent = current.slice(0, --ci);
+      if (ci === 0) { deleting = false; ri = (ri + 1) % roles.length; }
+    }
+    setTimeout(typeLoop, deleting ? 40 : 80);
+  }
+  typeLoop();
+
+  /* Hero counter (on load) */
+  document.querySelectorAll('.hero-stat-num[data-target]').forEach(num => {
+    const target = +num.dataset.target;
+    const start = performance.now();
+    const tick = now => {
+      const p = Math.min((now - start) / 1600, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
+      num.textContent = Math.floor(ease * target);
+      if (p < 1) requestAnimationFrame(tick);
+      else num.textContent = target + (target >= 100 ? '+' : target === 8 ? '+' : '');
+    };
+    setTimeout(() => requestAnimationFrame(tick), 600);
+  });
+</script>
+</body>
+</html>
