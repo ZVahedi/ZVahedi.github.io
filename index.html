@@ -4,14 +4,11 @@
   
 <!-- The preview link configuration -->
 <meta property="og:image" content="https://zvahedi.github.io/VideoRecog.png">
-
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-
 <meta property="og:title" content="Zahra Vahedi | Human Factors Researcher">
 <meta property="og:description" content="Portfolio of Zahra Vahedi, PhD. Researching Human-Robot Collaboration and Aviation Safety.">
 
-  
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Zahra Vahedi | Human Factors & UX Researcher</title>
@@ -99,25 +96,10 @@
   .btn-outline { background: transparent; color: var(--white); border-color: var(--border); }
   .btn-outline:hover { border-color: var(--teal); color: var(--teal); }
 
-  /* ── HERO CARD — FIX 1: photo fills cleanly, no leftover SVG ── */
+  /* ── HERO CARD ── */
   .hero-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; display: flex; flex-direction: column; align-items: center; gap: 24px; position: relative; box-shadow: 0 0 60px rgba(0,212,170,0.06); }
-
-  /* FIX 1a: photo container — clips image to rounded box */
-  .hero-photo {
-    width: 200px; height: 220px;
-    border-radius: 12px; overflow: hidden;   /* ← this clips the image */
-    border: 2px solid var(--border);
-    background: var(--card-2);
-    flex-shrink: 0;
-  }
-  /* FIX 1b: image fills the box, covers it, no distortion */
-  .hero-photo img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    object-position: center top;  /* ← keeps face visible, not cropped to torso */
-    display: block;
-  }
-
+  .hero-photo { width: 200px; height: 220px; border-radius: 12px; overflow: hidden; border: 2px solid var(--border); background: var(--card-2); flex-shrink: 0; }
+  .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
   .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; }
   .hero-stat { background: var(--card-2); border-radius: 8px; padding: 14px 16px; text-align: center; border: 1px solid var(--border); }
   .hero-stat-num { font-family: var(--serif); font-size: 1.8rem; font-weight: 700; color: var(--teal); line-height: 1; }
@@ -137,29 +119,14 @@
   .highlight-title { font-size: 0.88rem; font-weight: 600; color: var(--white); }
   .highlight-sub { font-size: 0.78rem; color: var(--muted); }
 
-  /* ── SKILLS — FIX 2: legend doesn't overflow ── */
+  /* ── SKILLS ── */
   .skills-block {}
   .skills-category { margin-bottom: 28px; }
   .skills-cat-label { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal); margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
-
-  /* FIX 2: legend — constrain each item so text can't push segments */
   .skills-legend { display: flex; justify-content: flex-end; gap: 4px; margin-bottom: 20px; align-items: flex-start; }
-  .skills-legend-item {
-    display: flex; flex-direction: column; align-items: center; gap: 4px;
-    width: 30px;          /* fixed width — won't grow */
-    flex-shrink: 0;
-  }
+  .skills-legend-item { display: flex; flex-direction: column; align-items: center; gap: 4px; width: 30px; flex-shrink: 0; }
   .skills-legend-seg { width: 22px; height: 8px; border-radius: 2px; border: 1px solid rgba(0,212,170,0.2); flex-shrink: 0; }
-  .skills-legend-label {
-    font-family: var(--mono); font-size: 0.52rem; letter-spacing: 0.04em;
-    text-transform: uppercase; color: var(--muted); opacity: 0.55;
-    writing-mode: vertical-rl; transform: rotate(180deg);
-    white-space: nowrap;
-    height: 56px;
-    overflow: hidden;     /* FIX 2: clips text that's too long */
-    text-overflow: ellipsis;
-  }
-
+  .skills-legend-label { font-family: var(--mono); font-size: 0.52rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); opacity: 0.55; writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; height: 56px; overflow: hidden; text-overflow: ellipsis; }
   .skill-row { display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 14px; padding: 10px 0; border-bottom: 1px solid rgba(0,212,170,0.07); position: relative; }
   .skill-row:hover .skill-name { color: var(--teal); }
   .skill-name { font-size: 0.83rem; color: var(--white); font-weight: 500; transition: color var(--ease); }
@@ -176,30 +143,64 @@
   .skill-level.lv2 { color: var(--muted); }
   .skill-level.lv1 { color: var(--muted); opacity: 0.6; }
 
-  /* ── METRICS ── */
-  #metrics { background: var(--navy-3); min-height: auto; padding: 80px 60px; }
-  .metrics-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
-  .metric-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 36px 24px; text-align: center; transition: all var(--ease); position: relative; overflow: hidden; }
-  .metric-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--teal), transparent); }
-  .metric-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,212,170,0.10); border-color: var(--teal); }
-  .metric-num { font-family: var(--serif); font-size: 3rem; font-weight: 700; color: var(--teal); line-height: 1; margin-bottom: 6px; }
-  .metric-label { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
-  .metric-sub { font-family: var(--mono); font-size: 0.65rem; color: var(--muted); opacity: 0.6; margin-top: 4px; }
+  /* ── CERTIFICATIONS ── */
+  #certifications { background: var(--navy-3); min-height: auto; padding: 80px 60px; }
+  /* 4 columns on desktop, wrap to 2 on tablet */
+  .certs-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .cert-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 24px 20px; text-align: center; position: relative; overflow: hidden; transition: all var(--ease); }
+  .cert-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--teal), transparent); }
+  .cert-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,212,170,0.10); border-color: var(--teal); }
+  .cert-abbr { font-family: var(--mono); font-size: 1rem; font-weight: 500; color: var(--teal); margin-bottom: 10px; letter-spacing: 0.05em; }
+  .cert-name { font-size: 0.82rem; font-weight: 600; color: var(--white); line-height: 1.4; margin-bottom: 6px; }
+  .cert-issuer { font-family: var(--mono); font-size: 0.62rem; color: var(--muted); opacity: 0.7; }
 
   /* ── PROJECTS ── */
   #projects { background: var(--navy); }
   .projects-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; }
-  .proj-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 28px; cursor: default; transition: all var(--ease); position: relative; overflow: hidden; }
+  .proj-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 28px; cursor: default; transition: all var(--ease); position: relative; overflow: hidden; display: flex; flex-direction: column; }
   .proj-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--teal-2), var(--teal)); transform: scaleX(0); transform-origin: left; transition: transform var(--ease); }
   .proj-card:hover { transform: translateY(-6px); border-color: var(--teal); box-shadow: 0 20px 60px rgba(0,212,170,0.10); }
   .proj-card:hover::after { transform: scaleX(1); }
   .proj-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
   .proj-tag { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 9px; border-radius: 4px; background: var(--teal-dim); color: var(--teal); border: 1px solid var(--border); }
   .proj-title { font-family: var(--serif); font-size: 1.15rem; font-weight: 700; color: var(--white); line-height: 1.3; margin-bottom: 12px; }
-  .proj-desc { font-size: 0.87rem; color: var(--muted); line-height: 1.75; margin-bottom: 20px; }
-  .proj-stats { display: flex; gap: 20px; padding-top: 16px; border-top: 1px solid var(--border); }
-  .proj-stat strong { display: block; font-family: var(--serif); font-size: 1.3rem; color: var(--teal); line-height: 1; }
-  .proj-stat span { font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+  .proj-desc { font-size: 0.87rem; color: var(--muted); line-height: 1.75; margin-bottom: 20px; flex: 1; }
+
+  /* ── CONSISTENT PROJECT STATS — 3 equal columns always ── */
+  /*
+    All 10 cards use the same 3 columns:
+      Col 1 — Sample (participants / crews / pilots / "—")
+      Col 2 — Stage (Data Collection / Under Review / Published / etc.)
+      Col 3 — Duration (year range)
+    This makes every card scannable in the same visual rhythm.
+  */
+  .proj-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    margin-top: auto;
+  }
+  .proj-stat { min-width: 0; }
+  .proj-stat strong {
+    display: block;
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    color: var(--teal);
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .proj-stat span {
+    display: block;
+    font-size: 0.63rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-top: 2px;
+  }
 
   /* ── PUBLICATIONS ── */
   #publications { background: var(--navy-2); }
@@ -218,58 +219,15 @@
   .pub-link { font-size: 0.72rem; font-weight: 600; padding: 4px 12px; border-radius: 4px; border: 1px solid var(--border); color: var(--teal); white-space: nowrap; transition: all var(--ease); }
   .pub-link:hover { background: var(--teal); color: var(--navy); border-color: var(--teal); }
 
-  /* ── GALLERY — FIX 3: consistent 5-photo grid with caption overlays ── */
+  /* ── GALLERY ── */
   #practice { background: var(--navy); }
-
-  /* Desktop: 3-col asymmetric, first photo spans 2 rows */
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr 1fr;
-    grid-template-rows: 220px 220px;
-    gap: 12px;
-    margin-bottom: 40px;
-  }
-  /* FIX 3: each item is a relative container so caption overlays work */
-  .gallery-item {
-    border-radius: var(--r);
-    overflow: hidden;
-    background: var(--card);
-    border: 1px solid var(--border);
-    position: relative;           /* needed for caption overlay */
-    transition: border-color var(--ease), box-shadow var(--ease);
-    cursor: default;
-  }
+  .gallery-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; grid-template-rows: 220px 220px; gap: 12px; margin-bottom: 40px; }
+  .gallery-item { border-radius: var(--r); overflow: hidden; background: var(--card); border: 1px solid var(--border); position: relative; transition: border-color var(--ease), box-shadow var(--ease); cursor: default; }
   .gallery-item:hover { border-color: var(--teal); box-shadow: 0 0 24px rgba(0,212,170,0.12); }
   .gallery-tall { grid-row: span 2; }
-
-  /* Image fills the entire cell */
   .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-  /* FIX 3: caption overlay — slides up on hover */
-  .gallery-caption {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    background: linear-gradient(transparent 20%, rgba(10,15,30,0.97) 60%, rgba(10,15,30,1) 100%);
-
-    padding: 28px 14px 12px;
-    font-family: var(--mono); font-size: 0.68rem;
-    letter-spacing: 0.08em; text-transform: uppercase;
-    color: var(--teal);
-    transform: translateY(100%);
-    transition: transform 0.28s ease;
-  }
+  .gallery-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent 20%, rgba(10,15,30,0.97) 60%, rgba(10,15,30,1) 100%); padding: 28px 14px 12px; font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); transform: translateY(100%); transition: transform 0.28s ease; }
   .gallery-item:hover .gallery-caption { transform: translateY(0); }
-
-  /* Placeholder for slots without a photo yet */
-  .gallery-placeholder {
-    width: 100%; height: 100%;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    gap: 10px; color: var(--muted);
-    font-family: var(--mono); font-size: 0.68rem;
-    letter-spacing: 0.08em; text-transform: uppercase; text-align: center; padding: 12px;
-  }
-  .gallery-placeholder svg { opacity: 0.25; }
-
   .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   .video-embed { position: relative; padding-bottom: 56.25%; border-radius: var(--r); overflow: hidden; background: #000; border: 1px solid var(--border); }
   .video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
@@ -310,49 +268,30 @@
   @media (max-width: 900px) {
     section { padding: 80px 28px 60px; }
     #hero { padding: 80px 28px; }
-    #metrics, #contact { padding: 60px 28px; }
+    #certifications, #contact { padding: 60px 28px; }
     footer { padding: 20px 28px; }
     #nav { padding: 0 28px; }
     .hero-inner { grid-template-columns: 1fr; }
-
-    /* FIX 1 mobile: show the hero card on mobile too, centered */
-    .hero-card {
-      display: flex;
-      max-width: 340px;
-      margin: 0 auto;
-    }
-
+    .hero-card { display: flex; max-width: 340px; margin: 0 auto; }
     .about-grid { grid-template-columns: 1fr; }
-    .metrics-row { grid-template-columns: repeat(2,1fr); }
+    .certs-grid { grid-template-columns: repeat(2, 1fr); }
     .projects-grid { grid-template-columns: 1fr; }
-
-    /* FIX 3 mobile: single column, each photo a fixed height card */
-    .gallery-grid {
-      grid-template-columns: 1fr;
-      grid-template-rows: none;
-      gap: 12px;
-    }
+    .gallery-grid { grid-template-columns: 1fr; grid-template-rows: none; gap: 12px; }
     .gallery-tall { grid-row: auto; }
     .gallery-item { height: 220px; }
-
-    /* Always show caption on mobile (no hover) */
     .gallery-caption { transform: translateY(0); }
-
     .video-grid { grid-template-columns: 1fr; }
     .contact-grid { grid-template-columns: 1fr; }
     .pub-item { grid-template-columns: 1fr; }
     .pub-links { flex-direction: row; align-items: flex-start; }
     .nav-links { display: none; }
     .burger { display: flex; }
-
-    /* Skill level label shorter on mobile */
     .skill-level { min-width: 70px; font-size: 0.55rem; }
   }
-
   @media (max-width: 520px) {
-    .metrics-row { grid-template-columns: repeat(2,1fr); }
+    .certs-grid { grid-template-columns: 1fr 1fr; }
     footer { flex-direction: column; }
-    .skill-row { grid-template-columns: 1fr auto auto; gap: 8px; }
+    .skill-row { gap: 8px; }
     .skill-seg { width: 16px; }
     .skill-level { min-width: 60px; }
   }
@@ -366,9 +305,10 @@
   <ul class="nav-links" id="navLinks">
     <li><a href="#hero" class="active">Home</a></li>
     <li><a href="#about">About</a></li>
+    <li><a href="#certifications">Credentials</a></li>
     <li><a href="#projects">Research</a></li>
-    <li><a href="#publications">Publications</a></li>
     <li><a href="#practice">In Practice</a></li>
+    <li><a href="#publications">Publications</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="burger" id="burger"><span></span><span></span><span></span></div>
@@ -376,23 +316,24 @@
 
 <div class="mob-nav" id="mobNav">
   <button class="mob-close" id="mobClose">&#x2715;</button>
-  <a href="#hero"         onclick="closeMob()">Home</a>
-  <a href="#about"        onclick="closeMob()">About</a>
-  <a href="#projects"     onclick="closeMob()">Research</a>
-  <a href="#publications" onclick="closeMob()">Publications</a>
-  <a href="#practice"     onclick="closeMob()">In Practice</a>
-  <a href="#contact"      onclick="closeMob()">Contact</a>
+  <a href="#hero"          onclick="closeMob()">Home</a>
+  <a href="#about"         onclick="closeMob()">About</a>
+  <a href="#certifications"onclick="closeMob()">Credentials</a>
+  <a href="#projects"      onclick="closeMob()">Research</a>
+  <a href="#practice"      onclick="closeMob()">In Practice</a>
+  <a href="#publications"  onclick="closeMob()">Publications</a>
+  <a href="#contact"       onclick="closeMob()">Contact</a>
 </div>
 
 <!-- HERO -->
 <section id="hero">
   <div class="hero-inner">
     <div class="hero-text">
-      <div class="hero-tag"><span></span> PhD . AHFP · Research Scientist II · FAA</div>
+      <div class="hero-tag"><span></span> PhD · AHFP · Research Scientist II · FAA</div>
       <h1 class="hero-name">Zahra<br><span class="accent">Vahedi</span></h1>
       <div class="hero-role" id="typingRole">Human Factors Researcher</div>
-      <div class="hero-affil">University at Buffalo · Cherokee Nation Businesses  | FAA</div>
-      <p class="hero-summary">7+ years designing and executing rigorous human-subject studies, in aviation, robotics, healthcare, and industrial safety. I translate physiological signals, behavioral data, and statistical models into system decisions that protect and empower people.</p>
+      <div class="hero-affil">University at Buffalo · Cherokee Nation Businesses | FAA</div>
+      <p class="hero-summary">7+ years designing and executing rigorous human-subject studies in aviation, robotics, healthcare, and industrial safety. I translate physiological signals, behavioral data, and statistical models into system decisions that protect and empower people.</p>
       <div class="hero-btns">
         <a href="#projects" class="btn btn-teal">View Research</a>
         <a href="#publications" class="btn btn-outline">Publications</a>
@@ -400,26 +341,25 @@
       </div>
     </div>
 
-    <!-- FIX 1: hero-photo contains ONLY the img tag — no SVG, no text -->
     <div class="hero-card">
       <div class="hero-photo">
         <img src="photo.png" alt="Zahra Vahedi"/>
       </div>
       <div class="hero-stats">
-        <div class="hero-stat"><div class="hero-stat-num" data-target="220"data-suffix="+">0</div><div class="hero-stat-label">Citations</div></div>
+        <!-- data-suffix="+" makes the JS append + after counting -->
+        <div class="hero-stat"><div class="hero-stat-num" data-target="220" data-suffix="+">0</div><div class="hero-stat-label">Citations</div></div>
         <div class="hero-stat"><div class="hero-stat-num" data-target="14">0</div><div class="hero-stat-label">Publications</div></div>
-        <div class="hero-stat"><div class="hero-stat-num" data-target="7">0</div><div class="hero-stat-label">Yrs Exp.</div></div>
-        <div class="hero-stat"><div class="hero-stat-num" data-target="180"data-suffix="+">0</div><div class="hero-stat-label">Participants</div></div>
+        <div class="hero-stat"><div class="hero-stat-num" data-target="7" data-suffix="+">0</div><div class="hero-stat-label">Yrs Exp.</div></div>
+        <div class="hero-stat"><div class="hero-stat-num" data-target="180" data-suffix="+">0</div><div class="hero-stat-label">Participants</div></div>
       </div>
       <div class="hero-badges">
         <span class="hero-badge">Human-in-the-Loop</span>
         <span class="hero-badge">Robotics</span>
-        <span class="hero-badge">Human-Robot-Interaction</span>
+        <span class="hero-badge">HRI</span>
         <span class="hero-badge">Aviation</span>
         <span class="hero-badge">Usability</span>
         <span class="hero-badge">EMG</span>
         <span class="hero-badge">Healthcare</span>
-
         <span class="hero-badge">Eye-Tracking</span>
         <span class="hero-badge">EDA</span>
       </div>
@@ -437,12 +377,12 @@
         <div class="about-text">
           <p>I am a <strong>Human Factors and UX Researcher</strong> with 7+ years of experience spanning usability evaluation, human performance research, and mixed-methods analysis across aviation, healthcare, industrial safety, and robotics.</p>
           <p>I design and execute end-to-end human-subject studies, from IRB protocol development and participant recruitment through physiological data collection (SmartEye eye-tracking, Tobii eye-tracking, EMG, EDA, heart rate, motion capture) and stakeholder-ready synthesis. I apply statistical modeling and data science workflows in <strong>Python and R</strong> to translate behavioral signals into actionable, defensible findings for regulated, high-reliability environments.</p>
-          <p>Currently serving as <strong>Human Factors Researcher II </strong> via Cherokee Nation Businesses, delivering human-in-the-loop insights guiding automation and interface design decisions. Recipient of the AAUW National Fellowship, HFES Dieter W. Jahns Award, and the Mark Diamond Research Grant.</p>
+          <p>Currently serving as <strong>Human Factors Researcher II</strong> via Cherokee Nation Businesses, delivering human-in-the-loop insights guiding automation and interface design decisions. Recipient of the AAUW National Fellowship, HFES Dieter W. Jahns Award, and the Mark Diamond Research Grant.</p>
         </div>
         <div class="about-highlights reveal">
           <div class="highlight-item">
             <div class="highlight-icon">🎓</div>
-            <div><div class="highlight-title">PhD, Industrial and System Engineering - Human Factors </div><div class="highlight-sub">University at Buffalo, SUNY · GPA 3.83</div></div>
+            <div><div class="highlight-title">PhD, Industrial &amp; Systems Engineering — Human Factors</div><div class="highlight-sub">University at Buffalo, SUNY · GPA 3.83</div></div>
           </div>
           <div class="highlight-item">
             <div class="highlight-icon">🎓</div>
@@ -451,7 +391,7 @@
           <div class="highlight-item">
             <div class="highlight-icon">🎓</div>
             <div><div class="highlight-title">BSc, Industrial Health Engineering</div><div class="highlight-sub">Shahid Beheshti University of Medical Sciences · GPA 3.41</div></div>
-          </div>          
+          </div>
           <div class="highlight-item">
             <div class="highlight-icon">📝</div>
             <div><div class="highlight-title">AHFP — Associate Human Factors Professional</div><div class="highlight-sub">Board of Certification in Professional Ergonomics (BCPE)</div></div>
@@ -465,8 +405,6 @@
 
       <!-- SKILLS (5-level segmented bar) -->
       <div class="skills-block reveal">
-
-        <!-- FIX 2: legend — fixed-width items, labels clipped not wrapping -->
         <div class="skills-legend" style="margin-bottom:20px;">
           <div class="skills-legend-item">
             <div class="skills-legend-seg" style="background:rgba(0,212,170,0.15);"></div>
@@ -514,77 +452,58 @@
           <div class="skill-row"><span class="skill-name">Human-in-the-Loop &amp; Simulation Research</span><div class="skill-segs" data-level="5"><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div></div><span class="skill-level lv5">Expert</span></div>
           <div class="skill-row"><span class="skill-name">Ergonomics &amp; Workplace Safety</span><div class="skill-segs" data-level="5"><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div></div><span class="skill-level lv5">Expert</span></div>
           <div class="skill-row"><span class="skill-name">Human-Robot Interaction (HRI)</span><div class="skill-segs" data-level="5"><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div></div><span class="skill-level lv5">Expert</span></div>
-
-          <div class="skill-row"><span class="skill-name">Universal Design, Usability, &amp; Accessibility</span><div class="skill-segs" data-level="4"><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div></div><span class="skill-level lv4">Advanced</span></div>
-          <div class="skill-row"><span class="skill-name">Healthcare/Patient Experience Research</span><div class="skill-segs" data-level="3"><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div></div><span class="skill-level lv3">Intermediate</span></div>
-          <div class="skill-row"><span class="skill-name">UX/UI Prototyping</span><div class="skill-segs" data-level="3"><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div></div><span class="skill-level lv3">Intermediate</span></div>
+          <div class="skill-row"><span class="skill-name">Universal Design, Usability &amp; Accessibility</span><div class="skill-segs" data-level="4"><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div></div><span class="skill-level lv4">Advanced</span></div>
+          <div class="skill-row"><span class="skill-name">Healthcare / Patient Experience Research</span><div class="skill-segs" data-level="3"><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div></div><span class="skill-level lv3">Intermediate</span></div>
+          <div class="skill-row"><span class="skill-name">UX/UI Prototyping (Figma, PenPot)</span><div class="skill-segs" data-level="3"><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div><div class="skill-seg"></div></div><span class="skill-level lv3">Intermediate</span></div>
         </div>
 
-        <p style="font-family:var(--mono);font-size:0.58rem;color:var(--muted);opacity:0.45;margin-top:6px;text-align:right;"></p>
+        <p style="font-family:var(--mono);font-size:0.58rem;color:var(--muted);opacity:0.45;margin-top:6px;text-align:right;">Self-assessed · adapted from the Dreyfus competency model</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- METRICS -->
-<!-- <section id="metrics">
-  <div class="inner">
-    <div class="metrics-row">
-      <div class="metric-card reveal"><div class="metric-num" data-target="14">0</div><div class="metric-label">Peer-Reviewed Publications</div><div class="metric-sub">ResearchGate · Google Scholar</div></div>
-      <div class="metric-card reveal reveal-delay-1"><div class="metric-num" data-target="210"data-suffix="+">0</div><div class="metric-label">Total Citations</div><div class="metric-sub">Google Scholar</div></div>
-      <div class="metric-card reveal reveal-delay-2"><div class="metric-num" data-target="180"data-suffix="+">0</div><div class="metric-label">Study Participants</div><div class="metric-sub">across all research</div></div>
-      <div class="metric-card reveal reveal-delay-3"><div class="metric-num" data-target="8">0</div><div class="metric-label">Years of Research</div><div class="metric-sub">2016 – present</div></div>
-    </div>
-  </div>
-</section> -->
-
+<!-- CERTIFICATIONS -->
 <section id="certifications" style="background: var(--navy-3); min-height: auto; padding: 80px 60px;">
   <div class="inner">
     <div class="section-eyebrow">Professional Credentials</div>
     <h2 class="section-heading" style="margin-bottom: 40px;">Certifications</h2>
-    <div class="metrics-row">
-      <div class="metric-card reveal">
-        <div class="metric-num" style="font-size: 1.2rem; font-family: var(--mono); margin-bottom: 15px;">AHFP</div>
-        <div class="metric-label" style="font-size: 0.85rem; color: var(--white);">Associate Human Factors Professional</div>
-        <div class="metric-sub">BCPE Board of Certification</div>
+    <div class="certs-grid">
+      <div class="cert-card reveal">
+        <div class="cert-abbr">AHFP</div>
+        <div class="cert-name">Associate Human Factors Professional</div>
+        <div class="cert-issuer">BCPE Board of Certification</div>
       </div>
-      
-      <div class="metric-card reveal reveal-delay-1">
-        <div class="metric-num" style="font-size: 1.2rem; font-family: var(--mono); margin-bottom: 15px;">UX Design</div>
-        <div class="metric-label" style="font-size: 0.85rem; color: var(--white);">Foundations of UX Design</div>
-        <div class="metric-sub">Google / Coursera</div>
+      <div class="cert-card reveal reveal-delay-1">
+        <div class="cert-abbr">UX Design</div>
+        <div class="cert-name">Foundations of UX Design</div>
+        <div class="cert-issuer">Google / Coursera</div>
       </div>
-
-      <div class="metric-card reveal reveal-delay-2">
-        <div class="metric-num" style="font-size: 1.2rem; font-family: var(--mono); margin-bottom: 15px;">Project Management</div>
-        <div class="metric-label" style="font-size: 0.85rem; color: var(--white);">Foundations of Project Management</div>
-        <div class="metric-sub">Google / Coursera</div>
+      <div class="cert-card reveal reveal-delay-2">
+        <div class="cert-abbr">Project Mgmt</div>
+        <div class="cert-name">Foundations of Project Management</div>
+        <div class="cert-issuer">Google / Coursera</div>
       </div>
-
-      <div class="metric-card reveal reveal-delay-3">
-        <div class="metric-num" style="font-size: 1.2rem; font-family: var(--mono); margin-bottom: 15px;">Data Visualization</div>
-        <div class="metric-label" style="font-size: 0.85rem; color: var(--white);">Fundamentals of Visualization (Tableau)</div>
-        <div class="metric-sub">UC Davis / Coursera</div>
+      <div class="cert-card reveal reveal-delay-3">
+        <div class="cert-abbr">Visualization</div>
+        <div class="cert-name">Fundamentals of Visualization (Tableau)</div>
+        <div class="cert-issuer">UC Davis / Coursera</div>
       </div>
-
-      <div class="metric-card reveal">
-        <div class="metric-num" style="font-size: 1.2rem; font-family: var(--mono); margin-bottom: 15px;">AI Ethics</div>
-        <div class="metric-label" style="font-size: 0.85rem; color: var(--white);">Human Factors in AI</div>
-        <div class="metric-sub">Duke University / Coursera</div>
+      <div class="cert-card reveal">
+        <div class="cert-abbr">AI Ethics</div>
+        <div class="cert-name">Human Factors in AI</div>
+        <div class="cert-issuer">Duke University / Coursera</div>
       </div>
-
-      <div class="metric-card reveal reveal-delay-1">
-        <div class="metric-num" style="font-size: 1.2rem; font-family: var(--mono); margin-bottom: 15px;">Generative AI</div>
-        <div class="metric-label" style="font-size: 0.85rem; color: var(--white);">Prompting like a Pro</div>
-        <div class="metric-sub">Google / Coursera</div>
+      <div class="cert-card reveal reveal-delay-1">
+        <div class="cert-abbr">Gen AI</div>
+        <div class="cert-name">Prompting like a Pro</div>
+        <div class="cert-issuer">Google / Coursera</div>
       </div>
-
-      <div class="metric-card reveal reveal-delay-2">
-        <div class="metric-num" style="font-size: 1.2rem; font-family: var(--mono); margin-bottom: 15px;">Experiment Design</div>
-        <div class="metric-label" style="font-size: 0.85rem; color: var(--white);">Design of Experiments</div>
-        <div class="metric-sub">Arizona State University / Coursera</div>
+      <div class="cert-card reveal reveal-delay-2">
+        <div class="cert-abbr">DoE</div>
+        <div class="cert-name">Design of Experiments</div>
+        <div class="cert-issuer">Arizona State University / Coursera</div>
       </div>
-
     </div>
   </div>
 </section>
@@ -594,146 +513,182 @@
   <div class="inner">
     <div class="section-eyebrow">Research Projects</div>
     <h2 class="section-heading">Featured Studies &amp; Projects</h2>
+
+    <!--
+      ALL CARDS use the same 3-column stat format:
+        Col 1 = Sample size  (# Crews / # Pilots / # Participants / "—")
+        Col 2 = Stage        (Data Collection / Under Review / Published / etc.)
+        Col 3 = Duration     (year range)
+    -->
     <div class="projects-grid">
 
-     <div class="proj-card reveal">
-        <div class="proj-tags"><span class="proj-tag">Boeing 737</span><span class="proj-tag">NASA-TLX</span><span class="proj-tag">Mixed-Methods</span><span class="proj-tag">FAA - Cherokee Nation Businesses · 2025–present</span></div>
-        <div class="proj-title"> Simulator Study on Automated Operations  </div>
-        <div class="proj-desc">Conducting data analysis and data visualization. Revised research plan and data analysis plan. Developed surveys in Qualtrics.</div>
-        <div class="proj-stats"><div class="proj-stat"><strong>12</strong><span>Crews</span></div><div class="proj-stat"><strong>Data Collection stage</strong><span> Current study </span></div><div class="proj-stat"><strong>2025–present</strong><span>Duration</span></div></div>
-      </div>
-      
+      <!-- FAA 1 -->
       <div class="proj-card reveal">
-        <div class="proj-tags"><span class="proj-tag">TAGRAS</span><span class="proj-tag">Eye-Tracking</span><span class="proj-tag">Mixed-Methods</span><span class="proj-tag">FAA - Cherokee Nation Businesses · 2025–present</span></div>
-        <div class="proj-title">Simulator Study on Automated Operations </div>
-        <div class="proj-desc">Leading eye-tracking protocol and data processing. Revised research plan and data analysis plan. Developed surveys in Qualtrics. Managing participant sessions, integrating SmartEye eye-tracking across landing phases to quantify pilots' flight technical performance and mental workload.</div>
-        <div class="proj-stats"><div class="proj-stat"><strong>16</strong><span>Pilots</span></div><div class="proj-stat"><strong>Data collection Stage</strong><span>Current study</span></div><div class="proj-stat"><strong>2025–present</strong><span>Duration</span></div></div>
-        
-      </div>
-      
-      <div class="proj-card reveal">
-        <div class="proj-tags"><span class="proj-tag">Human-in-the-loop</span><span class="proj-tag">NASA-TLX</span><span class="proj-tag">Mixed-Methods</span><span class="proj-tag">FAA - Cherokee Nation Businesses · 2025–present</span></div>
-        <div class="proj-title">Simulator Study on Advanced Operations with Guidance Display </div>
-        <div class="proj-desc">Led result-report preparation, data visualization, and end-to-end delivery; reviewed the research plan. Applied repeated-measures ANOVA and Pareto analysis across normal and non-normal scenarios to identify the top-performing SVGS design.</div>
-        <div class="proj-stats"><div class="proj-stat"><strong>16</strong><span>Crews</span></div><div class="proj-stat"><strong>Under Review Stage</strong><span>Current Study </span></div><div class="proj-stat"><strong>2025–present</strong><span>Duration</span></div></div>
-      </div>
-      
-      <div class="proj-card reveal">
-        <div class="proj-tags"><span class="proj-tag">HRI</span><span class="proj-tag">NASA_TLX</span><span class="proj-tag">Mixed-Methods</span><span class="proj-tag">FAA - Cherokee Nation Businesses · 2025–present</span></div>
-        <div class="proj-title">Simulator Study on Visual Requirements for Takeoff Operations  </div>
-        <div class="proj-desc">Conducted the scenario randomization. Reviewed and revised the report.</div>
-        <div class="proj-stats"><div class="proj-stat"><strong>16</strong><span>Pilots</span></div><div class="proj-stat"><strong>Under Review Stage</strong><span> Current Study </span></div><div class="proj-stat"><strong>2025–present</strong><span>Duration</span></div></div>
+        <div class="proj-tags"><span class="proj-tag">Boeing 737</span><span class="proj-tag">NASA-TLX</span><span class="proj-tag">Mixed-Methods</span><span class="proj-tag">FAA · 2025–present</span></div>
+        <div class="proj-title">Simulator Study on Automated Operations</div>
+        <div class="proj-desc">Conducting data analysis and visualization. Revised research plan and data analysis plan. Developed surveys in Qualtrics.</div>
+        <div class="proj-stats">
+          <div class="proj-stat"><strong>12</strong><span>Crews</span></div>
+          <div class="proj-stat"><strong>Data Collection</strong><span>Stage</span></div>
+          <div class="proj-stat"><strong>2025–present</strong><span>Duration</span></div>
+        </div>
       </div>
 
-      
+      <!-- FAA 2 -->
+      <div class="proj-card reveal reveal-delay-1">
+        <div class="proj-tags"><span class="proj-tag">TAGRAS</span><span class="proj-tag">Eye-Tracking</span><span class="proj-tag">Mixed-Methods</span><span class="proj-tag">FAA · 2025–present</span></div>
+        <div class="proj-title">Simulator Study on Automated Operations — Eye-Tracking Protocol</div>
+        <div class="proj-desc">Leading eye-tracking protocol and data processing. Revised research plan and data analysis plan. Developed surveys in Qualtrics. Managing participant sessions integrating SmartEye eye-tracking across landing phases to quantify pilots' flight technical performance and mental workload.</div>
+        <div class="proj-stats">
+          <div class="proj-stat"><strong>16</strong><span>Pilots</span></div>
+          <div class="proj-stat"><strong>Data Collection</strong><span>Stage</span></div>
+          <div class="proj-stat"><strong>2025–present</strong><span>Duration</span></div>
+        </div>
+      </div>
+
+      <!-- FAA 3 -->
+      <div class="proj-card reveal reveal-delay-2">
+        <div class="proj-tags"><span class="proj-tag">Human-in-the-Loop</span><span class="proj-tag">NASA-TLX</span><span class="proj-tag">Mixed-Methods</span><span class="proj-tag">FAA · 2025–present</span></div>
+        <div class="proj-title">Simulator Study on Advanced Operations with Guidance Display</div>
+        <div class="proj-desc">Led result-report preparation, data visualization, and end-to-end delivery. Applied repeated-measures ANOVA and Pareto analysis across normal and non-normal scenarios to identify the top-performing SVGS design.</div>
+        <div class="proj-stats">
+          <div class="proj-stat"><strong>16</strong><span>Crews</span></div>
+          <div class="proj-stat"><strong>Under Review</strong><span>Stage</span></div>
+          <div class="proj-stat"><strong>2025–present</strong><span>Duration</span></div>
+        </div>
+      </div>
+
+      <!-- FAA 4 -->
+      <div class="proj-card reveal reveal-delay-3">
+        <div class="proj-tags"><span class="proj-tag">HRI</span><span class="proj-tag">NASA-TLX</span><span class="proj-tag">Mixed-Methods</span><span class="proj-tag">FAA · 2025–present</span></div>
+        <div class="proj-title">Simulator Study on Visual Requirements for Takeoff Operations</div>
+        <div class="proj-desc">Conducted the scenario randomization. Reviewed and revised the report.</div>
+        <div class="proj-stats">
+          <div class="proj-stat"><strong>16</strong><span>Pilots</span></div>
+          <div class="proj-stat"><strong>Under Review</strong><span>Stage</span></div>
+          <div class="proj-stat"><strong>2025–present</strong><span>Duration</span></div>
+        </div>
+      </div>
+
+      <!-- UB 1 — HRI / Cobot -->
       <div class="proj-card reveal">
         <div class="proj-tags"><span class="proj-tag">HRI</span><span class="proj-tag">Eye-Tracking</span><span class="proj-tag">Mixed-Methods</span><span class="proj-tag">NASA-TLX</span><span class="proj-tag">UB · 2023–2025</span></div>
         <div class="proj-title">Transition to Modern Workplaces with Collaborative Robots</div>
-        <div class="proj-desc">Led end-to-end mixed-methods research on human adaptation to cobot workflows. Managed 30+ participant sessions integrating Tobii eye-tracking and heart rate monitoring to quantify cognitive load, usability, and learning trajectories using the Crawford model. Delivered UX and HRI design recommendations grounded in behavioral and physiological data.</div>
-        <div class="proj-stats"><div class="proj-stat"><strong>30+</strong><span>Participants</span></div><div class="proj-stat"><strong>2</strong><span>Under review studies</span></div><div class="proj-stat"><strong>2023–25</strong><span>Duration</span></div></div>
+        <div class="proj-desc">Led end-to-end mixed-methods research on human adaptation to cobot workflows. Managed 30+ participant sessions integrating Tobii eye-tracking and heart rate monitoring to quantify cognitive load, usability, and learning trajectories using the Crawford model.</div>
+        <div class="proj-stats">
+          <div class="proj-stat"><strong>30+</strong><span>Participants</span></div>
+          <div class="proj-stat"><strong>Under Review</strong><span>Stage</span></div>
+          <div class="proj-stat"><strong>2023–2025</strong><span>Duration</span></div>
+        </div>
       </div>
 
+      <!-- UB 2 — Hotel -->
       <div class="proj-card reveal reveal-delay-1">
         <div class="proj-tags"><span class="proj-tag">Universal Design</span><span class="proj-tag">EDA</span><span class="proj-tag">Accessibility</span><span class="proj-tag">UB · 2022–2025</span></div>
         <div class="proj-title">Hotel Inclusivity — Universal Design for Diverse User Groups</div>
-        <div class="proj-desc">Conducted 50+ participant accessibility studies across healthy adults, older adults, and wheelchair users using guided hotel walkthroughs, usability ratings, and EDA physiological measures. Identified critical friction points; published in two peer-reviewed papers (HFES 2023, journal 2025).</div>
-        <div class="proj-stats"><div class="proj-stat"><strong>50+</strong><span>Participants</span></div><div class="proj-stat"><strong>2</strong><span>Publications</span></div><div class="proj-stat"><strong>2022–25</strong><span>Duration</span></div></div>
+        <div class="proj-desc">Conducted 50+ participant accessibility studies across healthy adults, older adults, and wheelchair users using guided hotel walkthroughs, usability ratings, and EDA physiological measures. Published in two peer-reviewed papers (HFES 2023, journal 2025).</div>
+        <div class="proj-stats">
+          <div class="proj-stat"><strong>50+</strong><span>Participants</span></div>
+          <div class="proj-stat"><strong>Published</strong><span>Stage</span></div>
+          <div class="proj-stat"><strong>2022–2025</strong><span>Duration</span></div>
+        </div>
       </div>
 
+      <!-- UB 3 — AI Safety -->
       <div class="proj-card reveal reveal-delay-2">
         <div class="proj-tags"><span class="proj-tag">Computer Vision</span><span class="proj-tag">AI Safety</span><span class="proj-tag">UX Design</span><span class="proj-tag">UB · 2024–2025</span></div>
         <div class="proj-title">Proactive Worker Safety via AI — Manager-Facing Interface</div>
-        <div class="proj-desc">Built a real-time ergonomic risk pipeline using YOLO, OpenPose, and Detectron2 computer vision models feeding a Python dashboard for manager-level safety decisions. Achieved ~70% automated risk-scoring accuracy through posture classification and validation against labeled observations.</div>
-        <div class="proj-stats"><div class="proj-stat"><strong>~70%</strong><span>Risk Accuracy</span></div><div class="proj-stat"><strong>3</strong><span>CV Models</span></div><div class="proj-stat"><strong>2024–25</strong><span>Duration</span></div></div>
+        <div class="proj-desc">Built a real-time ergonomic risk pipeline using YOLO, OpenPose, and Detectron2 CV models feeding a Python dashboard for manager-level safety decisions. Achieved ~70% automated risk-scoring accuracy through posture classification and validation against labeled observations.</div>
+        <div class="proj-stats">
+          <div class="proj-stat"><strong>—</strong><span>Participants</span></div>
+          <div class="proj-stat"><strong>Completed</strong><span>Stage</span></div>
+          <div class="proj-stat"><strong>2024–2025</strong><span>Duration</span></div>
+        </div>
       </div>
 
+      <!-- TUMS 1 — Smartphone kinematics -->
       <div class="proj-card reveal reveal-delay-3">
         <div class="proj-tags"><span class="proj-tag">EMG</span><span class="proj-tag">Neck Kinematics</span><span class="proj-tag">Ergonomics</span><span class="proj-tag">TUMS · 2018–2022</span></div>
         <div class="proj-title">Discomfort, Neck Kinematics &amp; Muscle Activity in Smartphone Use</div>
         <div class="proj-desc">Evaluated effects of posture, task type, and handgrip on discomfort, neck kinematics, and EMG in 24 participants. Sitting produced significantly higher neck, lower back, and shoulder discomfort. Published in <em>Human Factors</em> (Sage, 2024).</div>
-        <div class="proj-stats"><div class="proj-stat"><strong>24</strong><span>Participants</span></div><div class="proj-stat"><strong>6</strong><span>Publication</spans></div><div class="proj-stat"><strong><em>Human Factors</em></strong><span>Published</span></div></div>
+        <div class="proj-stats">
+          <div class="proj-stat"><strong>24</strong><span>Participants</span></div>
+          <div class="proj-stat"><strong>Published</strong><span>Stage</span></div>
+          <div class="proj-stat"><strong>2018–2022</strong><span>Duration</span></div>
+        </div>
       </div>
 
+      <!-- UB — RPE -->
       <div class="proj-card reveal">
         <div class="proj-tags"><span class="proj-tag">RPE</span><span class="proj-tag">Fatigue</span><span class="proj-tag">Biomechanics</span><span class="proj-tag">UB · 2021–2023</span></div>
         <div class="proj-title">RPE vs. Relative Strength in Fatiguing Dynamic Upper-Extremity Tasks</div>
         <div class="proj-desc">Evaluated RPE–relative strength relationship in simulated order-picking tasks. 14 participants completed four sessions across varying pace and weight conditions. Published in <em>Applied Ergonomics</em>.</div>
-        <div class="proj-stats"><div class="proj-stat"><strong>14</strong><span>Participants</span></div><div class="proj-stat"><strong>4</strong><span>Sessions</span></div><div class="proj-stat"><strong>Appl. Ergon.</strong><span>Published</span></div></div>
+        <div class="proj-stats">
+          <div class="proj-stat"><strong>14</strong><span>Participants</span></div>
+          <div class="proj-stat"><strong>Published</strong><span>Stage</span></div>
+          <div class="proj-stat"><strong>2021–2023</strong><span>Duration</span></div>
+        </div>
       </div>
 
+      <!-- TUMS 2 — Infusion -->
       <div class="proj-card reveal reveal-delay-1">
         <div class="proj-tags"><span class="proj-tag">Medical Device UX</span><span class="proj-tag">Force Analysis</span><span class="proj-tag">Clinical</span><span class="proj-tag">TUMS · 2017–2019</span></div>
         <div class="proj-title">Ergonomic Redesign of Infusion Set Connector Tool for Nurses</div>
         <div class="proj-desc">Reduced hand-arm force requirement from 112N to 49N (56% reduction) and decreased upper-limb muscle activity by 35–60%. Delivered engineering-ready specifications. Published in <em>Applied Ergonomics</em> (2019).</div>
-        <div class="proj-stats"><div class="proj-stat"><strong>56%</strong><span>Force Reduction</span></div><div class="proj-stat"><strong>1</strong><span>Publication</span></div><div class="proj-stat"><strong>Appl. Ergon.</strong><span>Published</span></div></div>
+        <div class="proj-stats">
+          <div class="proj-stat"><strong>—</strong><span>Participants</span></div>
+          <div class="proj-stat"><strong>Published</strong><span>Stage</span></div>
+          <div class="proj-stat"><strong>2017–2019</strong><span>Duration</span></div>
+        </div>
       </div>
 
     </div>
   </div>
 </section>
-
 
 <!-- RESEARCH IN PRACTICE -->
 <section id="practice">
   <div class="inner">
     <div class="section-eyebrow">Research in Practice</div>
     <h2 class="section-heading">Lab, Field &amp; Conference Work</h2>
-
-    <!-- FIX 3: each gallery-item has img + caption overlay. Hover reveals the caption label. -->
     <div class="gallery-grid reveal">
-
-      <!-- Tall photo (spans 2 rows on desktop) -->
       <div class="gallery-item gallery-tall">
         <img src="Cobot.png" alt="Cobot Workspace Study"/>
         <div class="gallery-caption">Cobot Workspace Study</div>
       </div>
-
       <div class="gallery-item">
         <img src="VideoRecog.png" alt="Real-time Video Recognition"/>
         <div class="gallery-caption">Real-time Video Recognition</div>
       </div>
-
       <div class="gallery-item">
         <img src="Hotel.png" alt="Hotel Walkthrough Study"/>
         <div class="gallery-caption">Public Facility Universal Design Evaluation</div>
       </div>
-
       <div class="gallery-item">
         <img src="Motion.png" alt="EMG &amp; Motion Capture"/>
-        <div class="gallery-caption">Kinemaatic Evaluation among Smartphone Users</div>
+        <div class="gallery-caption">Kinematic Evaluation among Smartphone Users</div>
       </div>
-
       <div class="gallery-item">
         <img src="Conference.png" alt="Conference Presentation"/>
         <div class="gallery-caption">Dieter W. Jahns Student Practitioner Award</div>
       </div>
-
     </div>
-
-    <!-- Videos -->
     <div class="video-grid reveal">
       <div class="video-block">
         <div class="video-embed">
-          <iframe src="https://www.youtube.com/embed/BlsBEqmCOQU"
-            title="Research Video 1"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/BlsBEqmCOQU" title="Cobot Study Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <p class="video-caption">▸ Cobot Study Demo</p>
       </div>
       <div class="video-block">
         <div class="video-embed">
-          <iframe src="https://www.youtube.com/embed/5vQp8hPMzF4"
-            title="Research Video 2"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/5vQp8hPMzF4" title="Real-time Ergonomics Safety Calculation" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
-        <p class="video-caption">▸ Real-time Ergonomics Saftey Calculation</p>
+        <p class="video-caption">▸ Real-time Ergonomics Safety Calculation</p>
       </div>
     </div>
   </div>
 </section>
-
 
 <!-- PUBLICATIONS -->
 <section id="publications">
@@ -747,20 +702,17 @@
       </a>
     </div>
     <div class="pub-list">
-      <div class="pub-item reveal"><div><div class="pub-venue">Disability and Rehabilitation: Assistive Technology· Mar 2025</div><div class="pub-title">Assessing Hotel Inclusivity: A Case Study Evaluation of Universal Design for Older Adults and Wheelchair Users</div><div class="pub-authors"><strong>Vahedi Z.</strong>, Quinn T., Cavuoto L.</div></div><div class="pub-links"><a href="https://www.tandfonline.com/doi/abs/10.1080/17483107.2025.2481440" target="_blank" class="pub-link">Disability and Rehabilitation: Assistive Technology</a></div></div>
-      <div class="pub-item reveal"><div><div class="pub-venue">Disability and Rehabilitation: Assistive Technology · Jan 2025</div><div class="pub-title">Exploring Physiological Responses Through EDA for Evaluating Universal Design Features in a Hotel Environment</div><div class="pub-authors">Quinn T., <strong>Vahedi Z.</strong>, Cavuoto L.</div></div><div class="pub-links"><a href="https://www.tandfonline.com/doi/abs/10.1080/17483107.2025.2454242" target="_blank" class="pub-link">Disability and Rehabilitation: Assistive Technology</a></div></div>
-      <div class="pub-item reveal"><div><div class="pub-venue">Human Factors · Feb 2024 · Vol. 66(2): 437–450</div><div class="pub-title">Perceived Discomfort, Neck Kinematics, and Muscular Activity During Smartphone Usage: A Comparative Study</div><div class="pub-authors"><strong>Vahedi Z.</strong>, Kazemi Z., Sharifnezhad A., Mazloumi A.</div></div><div class="pub-links"><a href="https://pubmed.ncbi.nlm.nih.gov/35477293/" target="_blank" class="pub-link">Human Factors</a></div></div>
+      <div class="pub-item reveal"><div><div class="pub-venue">Disability and Rehabilitation: Assistive Technology · Mar 2025</div><div class="pub-title">Assessing Hotel Inclusivity: A Case Study Evaluation of Universal Design for Older Adults and Wheelchair Users</div><div class="pub-authors"><strong>Vahedi Z.</strong>, Quinn T., Cavuoto L.</div></div><div class="pub-links"><a href="https://www.tandfonline.com/doi/abs/10.1080/17483107.2025.2481440" target="_blank" class="pub-link">Journal</a></div></div>
+      <div class="pub-item reveal"><div><div class="pub-venue">Disability and Rehabilitation: Assistive Technology · Jan 2025</div><div class="pub-title">Exploring Physiological Responses Through EDA for Evaluating Universal Design Features in a Hotel Environment</div><div class="pub-authors">Quinn T., <strong>Vahedi Z.</strong>, Cavuoto L.</div></div><div class="pub-links"><a href="https://www.tandfonline.com/doi/abs/10.1080/17483107.2025.2454242" target="_blank" class="pub-link">Journal</a></div></div>
+      <div class="pub-item reveal"><div><div class="pub-venue">Human Factors · Feb 2024 · Vol. 66(2): 437–450</div><div class="pub-title">Perceived Discomfort, Neck Kinematics, and Muscular Activity During Smartphone Usage: A Comparative Study</div><div class="pub-authors"><strong>Vahedi Z.</strong>, Kazemi Z., Sharifnezhad A., Mazloumi A.</div></div><div class="pub-links"><a href="https://pubmed.ncbi.nlm.nih.gov/35477293/" target="_blank" class="pub-link">PubMed</a></div></div>
       <div class="pub-item reveal"><div><div class="pub-venue">HFES Annual Meeting Proceedings · 2023 · Vol. 67(1): 1072–1077</div><div class="pub-title">Understanding Hotel Design Priorities for Individuals of Different Physical Ability Levels</div><div class="pub-authors"><strong>Vahedi Z.</strong>, Cavuoto L.</div></div><div class="pub-links"><a href="https://journals.sagepub.com/doi/abs/10.1177/21695067231192693" target="_blank" class="pub-link">SageJournals</a></div></div>
       <div class="pub-item reveal"><div><div class="pub-venue">Journal of Occupational and Environmental Hygiene · 2023</div><div class="pub-title">The Relationship Between Ratings of Perceived Exertion (RPE) and Relative Strength for a Fatiguing Dynamic Upper Extremity Task</div><div class="pub-authors"><strong>Vahedi Z.</strong>, Kazemi Kheiri S., Hajifar S., Ragani Lamooki S., Sun H., Megahed F.M., Cavuoto L.A.</div></div><div class="pub-links"><a href="https://pubmed.ncbi.nlm.nih.gov/36799881/" target="_blank" class="pub-link">JOEH</a></div></div>
       <div class="pub-item reveal"><div><div class="pub-venue">Work: Prevention, Assessment &amp; Rehabilitation · 2021</div><div class="pub-title">Head Forward Flexion, Lateral Bending and Viewing Distance in Smartphone Users: Sitting vs. Standing Postures</div><div class="pub-authors"><strong>Vahedi Z.</strong>, Mazloumi A., Sharifnezhad A., Kazemi Z., Garosi E.</div></div><div class="pub-links"><a href="https://journals.sagepub.com/doi/10.3233/WOR-203303" target="_blank" class="pub-link">Work</a></div></div>
-      <div class="pub-item reveal"><div><div class="pub-venue">Applied Ergonomics · 2019 · Vol. 75: 91–98</div><div class="pub-title">Design and Ergonomic Assessment of an Infusion Set Connector Tool Used in Nursing Work</div><div class="pub-authors">Garosi E., Mazloumi A., Kalantari R., <strong>Vahedi Z.</strong>, Shirzhiyan Z.</div></div><div class="pub-links"><a href="https://www.sciencedirect.com/science/article/abs/pii/S0003687018303879" class="pub-link">Applied Ergonomics</a></div></div>
-      <!-- <div class="pub-item reveal"><div><div class="pub-venue">Int. Journal of Occupational Hygiene (IJOH) · 2019</div><div class="pub-title">Risk Factors of Low Back Pain in Iranian Workers 2000–2015: A Systematic Review</div><div class="pub-authors"><strong>Vahedi Z.</strong>, et al. — 150 studies reviewed; 48.77% avg LBP prevalence</div></div><div class="pub-links"><a href="#" class="pub-link">DOI</a></div></div> -->
-      <!-- <div class="pub-item reveal"><div><div class="pub-venue">Int. Journal of Occupational Hygiene (IJOH) · 2018</div><div class="pub-title">Survey of Smartphone Usability Score and Satisfaction Among Elderly Users</div><div class="pub-authors"><strong>Vahedi Z.</strong>, et al. — SUS 59.1–62.5 (avg 68.7 yrs); r = −0.69 age–usability</div></div><div class="pub-links"><a href="#" class="pub-link">DOI</a></div></div> -->
+      <div class="pub-item reveal"><div><div class="pub-venue">Applied Ergonomics · 2019 · Vol. 75: 91–98</div><div class="pub-title">Design and Ergonomic Assessment of an Infusion Set Connector Tool Used in Nursing Work</div><div class="pub-authors">Garosi E., Mazloumi A., Kalantari R., <strong>Vahedi Z.</strong>, Shirzhiyan Z.</div></div><div class="pub-links"><a href="https://www.sciencedirect.com/science/article/abs/pii/S0003687018303879" target="_blank" class="pub-link">Applied Ergonomics</a></div></div>
     </div>
-    <p style="margin-top:20px;font-family:var(--mono);font-size:0.72rem;color:var(--muted);">↗ Full list on <a href="https://scholar.google.com/citations?user=spYCdc8AAAAJ&hl=en" target="_blank">Google Scholar</a> and <a href="https://www.researchgate.net/profile/Zahra-Vahedi" target="_blank">ResearchGate</a>. 
+    <p style="margin-top:20px;font-family:var(--mono);font-size:0.72rem;color:var(--muted);">↗ Full list on <a href="https://scholar.google.com/citations?user=spYCdc8AAAAJ&hl=en" target="_blank">Google Scholar</a> and <a href="https://www.researchgate.net/profile/Zahra-Vahedi" target="_blank">ResearchGate</a>.</p>
   </div>
 </section>
-
 
 <!-- CONTACT -->
 <section id="contact">
@@ -839,16 +791,17 @@
         });
       });
 
-      /* Counters */
+      /* Scroll-triggered counters (metrics section etc.) */
       el.querySelectorAll('[data-target]').forEach(num => {
         const target = +num.dataset.target;
+        const suffix = num.dataset.suffix || '';   /* ← reads data-suffix="+" */
         const start = performance.now();
         const tick = now => {
           const p = Math.min((now - start) / 1400, 1);
           const ease = 1 - Math.pow(1 - p, 3);
           num.textContent = Math.floor(ease * target);
           if (p < 1) requestAnimationFrame(tick);
-          else num.textContent = target;
+          else num.textContent = target + suffix;  /* ← appends the suffix */
         };
         requestAnimationFrame(tick);
       });
@@ -857,7 +810,7 @@
     });
   }, { threshold: 0.12 });
 
-  document.querySelectorAll('.reveal, .hero-card, .about-grid, .metrics-row, .projects-grid, .pub-list, .gallery-grid, .video-grid, .contact-grid').forEach(el => {
+  document.querySelectorAll('.reveal, .hero-card, .about-grid, .projects-grid, .pub-list, .gallery-grid, .video-grid, .contact-grid').forEach(el => {
     el.classList.add('reveal');
     iObs.observe(el);
   });
@@ -880,16 +833,17 @@
   }
   typeLoop();
 
-  /* Hero counter (on load) */
+  /* Hero counters (fire on page load, also read data-suffix) */
   document.querySelectorAll('.hero-stat-num[data-target]').forEach(num => {
     const target = +num.dataset.target;
+    const suffix = num.dataset.suffix || '';       /* ← reads data-suffix="+" */
     const start = performance.now();
     const tick = now => {
       const p = Math.min((now - start) / 1600, 1);
       const ease = 1 - Math.pow(1 - p, 3);
       num.textContent = Math.floor(ease * target);
       if (p < 1) requestAnimationFrame(tick);
-      else num.textContent = target + (target >= 100 ? '+' : target === 8 ? '+' : '');
+      else num.textContent = target + suffix;      /* ← appends the suffix */
     };
     setTimeout(() => requestAnimationFrame(tick), 600);
   });
